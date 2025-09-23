@@ -1,0 +1,4 @@
+# vamos a ignorar todos los jupyter 
+*.ipynb
+!evaluaciones/**/*.ipynb 
+!Ejercicios-Semana*
