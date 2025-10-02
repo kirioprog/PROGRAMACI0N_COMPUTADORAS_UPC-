@@ -29,6 +29,7 @@ nombre = "Kirio"
 def cambia_nombre():
     #esta variable nombre solo tiene alcance local osea solo exist e dentro de la funcion 
     #DEFINIAMOS EL ALCANCE GLOBAL PARA LA VARIABLE NOMBRE
+    
     global nombre 
     nombre = "Saho"
     
@@ -92,6 +93,7 @@ print(num_suma(3,4))
 #LA QUE YA VIENE DEFINIDA CON PYTHON 
 
 #    sum(iterable, start=0) el star es  en donde empieza a sumar
+#    el iterable es una lista 
 
 
 print(sum([1,2,3,4,5])) #Suma todos los valores de la lista
@@ -115,6 +117,9 @@ print(mult_div(8,4))
 
 #imprimamos cada valor por separado 
 resultado = mult_div(8, 4)
+#esta opcion me gusta mas 
+print(mult_div(10,5)[1])
+print()
 print(resultado[0])
 print(resultado[1])
 
@@ -126,6 +131,7 @@ print(d)
 
 #%%
 #PARAMETROS INFINITOS PARA UNA FUNCION
+
 
 #PRIMERO REVISEMOS COMO FUNCIONA EL OPERADOR SPLAT
 nums = [10, 20, 30]
@@ -144,6 +150,7 @@ print(suma_todo(1,2,3,4,5))
 
 #%%
  #FUNCIONES RECURSIVAS 
+ #NI LO MIRES 
  
 def factorial(n):
     if n == 0:
@@ -162,11 +169,16 @@ print(por_tres(5))
 
 #AHORA UTILICEMOS UNA FUNCION ANONIMA LAMBDA
 #SON FUNCIONES SENCILLAS DE UNA SOLA LINEA
+
+#EN ESTE CASO X ES TU PÁRAMETRO 
 triplicar = lambda x: 3 * x
 print(triplicar(5))
 
 sumar = lambda x,y: x + y
 print(sumar(3,4))
+
+dividir = lambda x, y: x / y 
+print(dividir(10,3))
 
 #%%
 #MAP PERMITE AFECTAR POR UNA OPERACION A TODOS LOS VALORES DE UNA LISTA 
@@ -182,6 +194,7 @@ print(lista)
 
  #map(func, list)
 
+#OBS: Coloco list para convertir lo que te da map a una lista gf
 lista = [1,2,3,4,5,6]
 lista = list(map(lambda x: x * 2, lista))
 print(lista)
@@ -199,7 +212,9 @@ while i < len(lista):
     
 print(lista)
 
-#AHORA VAMOS HACERLO CON FILTERE
+#AHORA VAMOS HACERLO CON FILTER
+#FILTRA CADA ELEMENTO QUE CUMPLA LA FUNCION,Q UE LA FUNCION TE DE TRUE 
+ 
 #filter(fun, list)
 lista = [1,2,3,4,5,6,7,8,9]
 lista = list(filter(lambda x: x % 2 == 0, lista))

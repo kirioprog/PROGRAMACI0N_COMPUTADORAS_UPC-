@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
+  # -*- coding: utf-8 -*-
 #IMPORTAMOS SOLO LAS FUNCIONES QUE NECESITAREMOS 
+#vamos a importar las funciones calendario_mes, nombre_mes del archivo fun_calendar
 from func_calcendar import calendario_mes, nombre_mes
 
 opc = input("Calendario Anual [a] o Calendario Mensual [m]: ")
@@ -14,6 +15,7 @@ if opc == 'm':
     print(f"\n\t{'D':>2}  {'L':>2}  {'M':>2}  {'X':>2}  {'J':>2}  {'V':>2}  {'S':>2}")
     
     # Imprimir el calendario
+    #es como un f string pero con format  si podemo desempaquetar week
     for week in calendario_mes(m, Y):
         print("\t{:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}".format(*week))
     else:
