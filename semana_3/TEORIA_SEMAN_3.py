@@ -239,7 +239,7 @@ edades = [23, 50, 18]
 for nombre, edad in zip(nombres, edades):
     print(f"{nombre} tiene {edad} años")
     
-#%%    
+ #%%    
 #M0DIFICAR LISTAS 
 
 l = [1, 2, 3, 4, 5]
