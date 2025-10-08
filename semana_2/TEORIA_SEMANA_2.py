@@ -26,6 +26,8 @@ elif num % 5 == 0:
     print("el numero es divisible entre 5 ")
 
 #%%
+
+#TODO convertimos la entrada de imput a entero 
 anio = int(input("Ingrese el año : "))
 
 # si el año es multiplo de 4 puede ser bisiesto 
@@ -45,7 +47,7 @@ else:
     print("No es bisiesto")
 
 #%%
-#RECUERDA: PYTHON ODIA LO ANIDADO Y PREFIERE EN UNA (LINEA)(plano)
+#TODO: PYTHON ODIA LO ANIDADO Y PREFIERE EN UNA (LINEA)(plano)
 anio = int(input("INGRESE SU AÑO: "))
 
 if anio % 4 == 0 and (anio % 100 != 0 or anio %400 == 0):
@@ -58,7 +60,7 @@ lista = ["alicia", "jacinta", "susana", "maria"]
 novia = "susana"
 
 
-#el operador in pregunta si argumento 1 esta dentro de argumento 2
+#TODO el operador "in" pregunta si argumento 1 esta dentro de argumento 2
 print(novia in lista)
 print(novia not in lista)
 print ("jacinta" in lista)
@@ -72,6 +74,7 @@ else:
     print(f"{num} es impar")
 
 #%%%
+#TODO RANGE 
 #range genera un rango de datos 
 #tiene 10 valores desde 0 hasta el 9
 range(10)
@@ -79,7 +82,7 @@ range(10)
 
 #rango de 1 hasta 4
 range(1, 5)
-
+ 
 #cuenta de 1a 10 pero de 2 en 2 
 range(1, 10, 2)  #1,3,5,7,9
 
@@ -89,17 +92,17 @@ range(10, 1, -1)  #10,9,8....,2
 #%%
 #RECUERDA: IN SIGNIFICA ESTA ADENTRO DE 
 5 in range(0, 20, 2)
-
 #%%
 
 num = int(input("Ingrese un numero positivo: "))
 
 if num in range(0, num + 1, 2):
-|    print(f"{num} es par")
+    print(f"{num} es par")
 else:
     print(f"{num} es impar")
 
 #%%
+#TODO FOR 
 number_list = [1, 2, 3, 4, 5, 6, 7, 8,9,10]
 
 #para cada numero que esta en la lista imprime, los elementos de la lista se guardan en each_number
@@ -111,7 +114,7 @@ for each_number in number_list:
 print("Secuencia de numero pares ")
 
 for num in range (0,21,2):
-    print(num)
+    print(num,end='--')
 #%%
 num_primos = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 53, 57, 59]
 
@@ -124,16 +127,18 @@ else:
     
 
 #%%
+#todo while
 num = 5
 while num > 0:
     print(num)
     num -=1
 #%%
-
-#voy a intentar algo alemnos de que salga algho mal 
+#todo TRY - EXCEPT
+#voy a intentar algo almenos de que salga algho mal 
 edad = input("Ingrese su edad: ")
 try:
     #como el codigo se ejecuta en orden si ingresar "quince" altoque te arooja error y te mand a excep 
+#por ejemplo ingresas quince, esto no se puede convertir a int por lo tanto te manda a excep porque detecto ese error .
     edad = int(edad)
     if edad < 18:
         print("DNI AMARILLO")
@@ -143,16 +148,22 @@ except:
     print("La edad ingresada no es valida")
     
 #%%
+#estos2 numeros etan separados por un /
 try:
-    n1, n2 = input("Ingrese 2 numeros: ").split()
+    n1, n2 = input("Ingrese 2 numeros n1/n2: ").split('/')
+    print("los numeros son:", n1, n2)
     
     #si hay un error ese error se guarda en e y luego lo imprime
+    #NO LE HAGAS MUCHO CASO A ESTO JEJE , ES MEJOR PONER TU PROPIO ERROR 
 except Exception as e:
     print(e)
     
 
 #%%
+#TODO BREAK CONTINUE
+
 #break sale del bucle
+
 #continue omite todo lo que esta debajo y continua con su bucle 
 num_valido = False
 while not num_valido:
@@ -175,7 +186,7 @@ while not num_valido:
             
             
 #%%
-#else dentro de un for par evitar confuncion al momento de leer 
+#else despues de un for par evitar confuncion al momento de leer 
 #el else solo se ejecuta cuando se acaba todo el for, si lo rompes con un break, ya no se ejecuta
 
 for num in range(10):
@@ -187,15 +198,15 @@ else:
 
 #%%
 #hacer comentarios reservados par hacer TODO
-
+#todo el pass te permite ejecutar el codigo sin terminarlo 
 if num < 0:
-    #TODO: ESto es falta..
+   
     pass
 else:
-    #todo
+   
     pass
 #%%
-#MATCH ... CASE  
+#TODO MATCH ... CASE  
 opc = int(input("Ingrese una opcion valida: "))
 
 match opc:
@@ -222,6 +233,7 @@ match opc:
     case _:
         print("Opcion inválida")
  #%%
+ #TODO RANDOM 
 import random
 
 # Para ver todas las funciones disponibles dentro de la librería random 

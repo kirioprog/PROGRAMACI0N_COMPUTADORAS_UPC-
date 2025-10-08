@@ -37,12 +37,13 @@ sin(1)
 #%% 
 #EJEMPLOS PRACTICOS CON LA BIBLIOTECA MATH
 
-#CON ESTO IMPORTAMOS TODAS LAS LIBRERIAS y solo basta con poner el nombre de la funcion y listo pero no es lo recomendado , es mejor poner alias
+#TODO CON ESTO IMPORTAMOS TODAS LAS LIBRERIAS y solo basta con poner el nombre de la funcion y listo pero no es lo recomendado , es mejor poner alias
 from math import *
+m = 10
 #=====================
 print("1.4 elevada a la -3", 1.4e-3)
 #para imprimir el pi observa que estamos utilizando el alias que anteriormente ya habiamos declarado 
-print("PI =", m.pi)
+print("PI =", m*pi)
 
 #EXPRESIONES EXPONENCIALES Y LOGARITMICAS 
 print("3**2", pow(3, 2))
@@ -74,16 +75,16 @@ print("El redondeo hacia arriba de 3.01", ceil(3.01))
 
 
 #%%
-#TUPLAS
+#todo TUPLAS
 #=======================
 #ES COMO UNA MATRIX PERO CON VALORES  CONSTANTES  PERO OJO QUE EN LA TUPLA PUEDES AÑADIR DATOS DE DIFERENTE TIPO 
-t1 = (1, 2, 3, 4, 5)
-t2 = (1, 'Uno', 'one', 1+0j)
+t1 = (0,1, 2, 3, 4, 5)
+t2 = (0, 'Uno', 'one', 1+0j)
 #esta es una tupla de tuplas 
 t3 = (t1, t2)
 #aqui estas colocando la tupla 2 en la posicion 1 de la tupla 4, cuando se imprima se va imrpimir toda la tupla 2
 t4 = (1, t2, 'A', t2, t3)
-#el range genera una secuencia de 0 al 9 y esto los convierte en una tupla que sera llamada t5
+#todo el range genera una secuencia de 0 al 9 y esto los convierte en una tupla que sera llamada t5
 t5 = tuple(range(10))
 
 print(t1)
@@ -93,7 +94,7 @@ print(t4)
 print(t5)
 
 #%%
-#CREAR UN RANGO PARA LOS INDICES DE LAS TUPLAS 
+#CREAR UN RANGO PARA LOS #todo  INDICES DE LAS TUPLAS 
 
 #   [i_inicial: i_final + 1: paso_entre_indices] 
 print(t1[0:3])
@@ -110,14 +111,14 @@ len(t1)
 print(t3[0][0])
 
 #%%
-#DESEMPAQUETAMIENTO DE TUPLAS 
+#todo DESEMPAQUETAMIENTO DE TUPLAS 
 
 #estamos repartiendo la tupla en las variables a, b, c en ese orden 
 a, b, c = (1, 2, 3)
 print(a)
 print(b)
 print(c)#%%
-#TUPLAS COMO ITERABLES 
+#todo TUPLAS COMO ITERABLES 
 #Osea pueden ingrear a un for y este extraera sus elementos 
 for number in(1, 2, 3, 4, 5):
     print(number)
@@ -126,7 +127,7 @@ for idx in range(0, len(t1), 2):
     print(t1[idx])
     
 #%%
-#OPERACIONES CON TUPLAS
+#todo OPERACIONES CON TUPLAS
 
 #SUMA DE TUPLAS
 #Lo que va a pasar es que va añadiendo todo esto en una nueva tupla 
@@ -146,10 +147,11 @@ print(len(t1))
 print(min(t1))
 #Encuentra el valor mas grande de la coleccion 
 print(max(t1))
-#Ordena la coleccion
+#todo Ordena la coleccion
 print(sorted(t1))
 #Suma todos los elementos de la coleccion 
 print(sum(t1))
+#%%
 
 #USO DE ELEMENTOS PARA DETECTAR TRUE O FALSE EN UNA TUPLA
 #si uno de los elementos es true, devuelve true 
@@ -161,7 +163,7 @@ print(all(t1))
 
 
 #%%
-#LISTASSSSSSSSSSSSSSSSSSSS
+#todo LISTASSSSSSSSSSSSSSSSSSSS
 #=========================================
 
 #Las listas son como tuplas pero los elementos de estas si son modificables 
@@ -170,7 +172,7 @@ L1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 L2 = ['1', 'one', 1+3j]
 #lista de lista 
 L3 = [L1, L2, 'aqui estoy']
-#genera una secuencia de numero de 0 a 9, los convierte en una lista cuyo nombnre sera L4 
+#todo genera una secuencia de numero de 0 a 9, los convierte en una lista cuyo nombnre sera L4 
 L4 = list(range(10))
 #es lo mismo que el anterior solo que lo convierete a tupla y de tupla a lista 
 L5 = list(tuple(range(20)))
@@ -185,15 +187,16 @@ print(L5)
 print(L6)
 print(type(L1))
 
-print ( '=' * 20)
+#%%
+
 #AL IGUAL QUE UNA TUPLA LA LISTA ACEPETA VALORES POSITIVOS Y NEGATIVOS, SU INDICE FUNCIONA IGUAL 
 print(L6[0])
 print(L6[-1])
 print(L1[1:7:3])
 print(L6[2][1])
+#%%
+#LAS #todo OPERACIONES ENTRE LISTAS FUNCIONAN  IGUAL QUE EN LAS TUPLAS
 
-#LAS OPERACIONES ENTRE LISTAS FUNCIONAN  IGUAL QUE EN LAS TUPLAS
-print('=' * 30)
 print(L1 + L2)
 #repite la lista 3 veces 
 print(L1 * 3)
@@ -203,10 +206,10 @@ for item in L1:
     print(item)
 
 #%%
-#ENUMERATE Y ZIP FUNCIONA PARA TUPLAS Y PARA LISTAS, ANBOS SE UTILIZAN CON UN FOR
+#todo ENUMERATE Y ZIP FUNCIONA PARA TUPLAS Y PARA LISTAS, ANBOS SE UTILIZAN CON UN FOR
 
 #ENUMERATE
-#Retorna una secuencia enumerada en tuplas de la forma(numero, elemento) 
+#Retorna una secuencia enumerada en tuplas de la forma(indice, elemento) 
 
 #por defecto el star o numero inciial es 0
 
@@ -240,7 +243,7 @@ for nombre, edad in zip(nombres, edades):
     print(f"{nombre} tiene {edad} años")
     
  #%%    
-#M0DIFICAR LISTAS 
+#todo M0DIFICAR LISTAS 
 
 l = [1, 2, 3, 4, 5]
 #APPEND()
@@ -248,6 +251,7 @@ l = [1, 2, 3, 4, 5]
 #estamos añadiendo 6 al final de la lista, no se puede poner dentro del print porque append no retorna nada
 l.append(6)
 print(l)
+print(l.append(6))
 
 #INSERT(ubicacion, valor), inserta un valor en la ubicacion designada, NO RETORNA NADA
 l.insert(1,'A')
@@ -289,7 +293,7 @@ l.extend(['a','c','b'])
 print(l)
 
 #%%
-#LISTAS POR COMPRENSION
+#TODO LISTAS POR COMPRENSION
 
 #ESTE ES UN EJEMPLO NORMAL 
 lista = []

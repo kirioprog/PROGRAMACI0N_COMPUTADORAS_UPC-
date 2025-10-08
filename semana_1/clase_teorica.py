@@ -7,12 +7,13 @@ print("hello, word")
 print('Hello, word')
 print('hello, "word"')
 
+
 #%%
 #la , lo que hace es generar espacio en blanco
 #escribiendo print? en el terminal puede consultar lo que pasa con print
 
 print(1, 2, 3, 4, 5)
-
+#TODO END  Y SEP   
 #vamos hacer que el separador sea ->
 #esto lo hacemos utilizando el argumento sep 
 print(1, 2, 3, 4, 5, sep='->')
@@ -57,7 +58,7 @@ print(2 **(6-3))
 
 #este retorna un float porque la division siempre da un float 
 
-print(2 **(6-3)/2)
+print(2 **(6-1)/2)
 
 a= 10
 print(a)
@@ -180,6 +181,7 @@ nombre = input("Ingresa tu nombre: ")
 print("Hola", nombre + "!") 
 
 #%%
+#TODO F-STRING
 #FORMATO DE VISUALIZACION NUMERICA
 #-------------------------------------------------------------------------------
 #FORMAT 
