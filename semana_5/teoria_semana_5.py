@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 
 #%%
-#STRING 
+#todo STRING 
 print("soy un string")
 print(type(""))
 
@@ -25,11 +25,11 @@ print(texto[:10])
 print(texto[::3])
 print(texto[::-1])
 #%%
-#LOS STRING SON INMUTABLES OSEA NO PUEDES CAMBIAR SUS CARACTERES INDIVIDUALES 
+#TODO LOS STRING SON INMUTABLES OSEA NO PUEDES CAMBIAR SUS CARACTERES INDIVIDUALES 
 texto1 : str = "hola"
 texto1[0] = "m"
 #%%
-#UTILIZAR FOR CON LOS STRING 
+#TODO UTILIZAR FOR CON LOS STRING 
 for char in 'string':
     print(char)
 #te imprime cara caracter del string 
@@ -38,7 +38,7 @@ for can in "este es un ejemplo":
     print(can)
 
 #%%
-#OPERACIONES CON STRING 
+#TODO OPERACIONES CON STRING 
 #vamos a imprimir 3 zetas y seguido de esto 6 puntos 
 print("z" * 3 + "." * 6)
 
@@ -47,21 +47,21 @@ print(titulo)
 #como ya imprimimos el mensaje titulo y quiero ponerlo bonito voy a poner = pero la cantidad de veces  sera  ighual a la longitud del mensaje 
 print("=" * len(titulo))
 #%%
-#CONOCER EL CODIGO UNICODE 
+#TODO CONOCER EL CODIGO UNICODE 
 #NO SIRVE MUCHO JEJE 
 #te tiene que salir A = 65 porque 65 es el codgio de la letra A en unicode
 print("A = ", ord("A"))
 print("65 = ", chr(65))
 
 #%%
-#METODOS DE UN STRING 
+#TODO IMPORTANTE !!METODOS DE UN STRING 
 #podemos observar los usos que le podemos dar al string 
 dir(str)
 
 #ELIMINAR CARACTERES
 #al eleiminar un caractere obtienes un nuevo string 
 
-texto = "            ESTE ES UN NUEVO TEXTO DE PRUEBA      ."
+texto = "            ESTE ES UN NUEVO TEXTO DE PRUEBA      .             "
 
 print(f"|{texto}|")
 
@@ -76,10 +76,12 @@ print(f"{texto.rstrip()}")
 
 #%%
 #El método .strip(",.grt") quita los caracteres , . g r t pero solo de los extremos (inicio y final), no del medio.
-print(",,,,,rrttgg.....banana....rrr".strip(",.grt"))
+print(",,,,,rrttgg.....banana....rrr".strip(",.grta"))
 
 #%%
-#CAMBIAR LOS CARACTERES DE UN STRING
+#TODO CAMBIAR LOS CARACTERES DE UN STRING
+#TODO
+#TODO
 
 texto = "m   vamos a probar otra vez    ."
 #convierte el primer caracater en mayuscula
@@ -97,24 +99,27 @@ print(texto.strip().title())
 print(texto.strip().title().swapcase())
 
 #%%
-#METODOS ASOCIADOS A OCURRENCIAS EN UN STRING O SUBSTRING 
+#TODO METODOS ASOCIADOS A OCURRENCIAS EN UN STRING O SUBSTRING 
+#TODO
+
 texto = "este es un  texto de prueba "
 #CONTAR EL NUMEROI DE VECEZ QUE UN SUBSTRING ESTA EN UN STRING
 print(texto.count("es"))
 #reemplaza un substring por otro , en este caso reemplazo es por no es 
 #OJO CON EL ESPACIO REEMPLAZA CON TODO ESO 
 print(texto.replace("es ", "no es "))
+print(texto)
 #NO SON LO MISMO 
 print(texto.replace("es", "no es"))
 
-#retorna la ubicacion del substring, en este caso e se encuenta en la posicion 1 por eso te arroja 1
+#retorna la ubicacion del substring, en este caso e se encuenta en la posicion 0 por eso te arroja 0
 print(texto.find("es"))
-#retorna 6 por "es" tal cual se encuentra en la posicion 6 
+#retorna 5 por "es" tal cual se encuentra en la posicion 5
 print(texto.rfind("es"))
 
 
 #%%
-#STRING Y JOIN
+#todo STRING Y JOIN
 
 #vamos a separar cadda palabra a travez del espacio, esto nos va a crear una lista
 las_palabras = "un alumno upecino".split()
@@ -136,18 +141,19 @@ print("123".isupper())
 print("   ".isspace())
 
 #%%
-#TIME
+#todo TIME
 import time 
 #nos retorna la fecha, mes, año, dia , hora , minuto, segundo local
 print(time.localtime())
 
 time_now = time.localtime()
 #tambien puede ser time_now: time = time.localtime()
-#el punto entre time_now y (lo que busco ) esta porque asi puedo acceder a timeÑ_now como en las estructuras de datos 
+#el punto entre time_now y (lo que busco ) esta porque asi puedo acceder a timeÑ_n ow como en las estructuras de datos 
 print(f"{time_now.tm_mday:0>2}/{time_now.tm_mon:0>2}/{time_now.tm_year}")
 
-#%%
-#GENERAR RETRASOS COMO LO HACIAS EN ARDUINO
+ #%%
+#todo GENERAR RETRASOS COMO LO HACIAS EN ARDUINO
+#todo
 #time.sleep(tiempo en segundo )
 
 print("iniciando en ", end = '')
