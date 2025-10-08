@@ -4,7 +4,7 @@
 
 #FUNCIONES
 
-#CREAR UNA FUNCION Y EXPLICAR LO QUE HACE LA FUNCION 
+#todo CREAR UNA FUNCION Y EXPLICAR LO QUE HACE LA FUNCION 
 
 def suma_num(num1, num2):
     #Entre las 3 comilla escribimos como funciona la funcion de manera textual 
@@ -40,7 +40,7 @@ cambia_nombre()
 print(nombre)
 
 #%%
-#REGLA LEGB:
+#todo REGLA LEGB:
     #LOCAL ( dentro de una funcion)
     #ENCLOSING (funcion que contiene a otra funcion)
     #GLOBAL(nivel archivo)
@@ -81,7 +81,7 @@ def fun_externa():
 # Esto ejecuta todo el código dentro de fun_externa
 fun_externa()
  #%%
-#KEYWORDS
+#todo KEYWORDS (funcion suma )
 
 def num_suma(num1, num2):
     return num1 + num2
@@ -106,7 +106,7 @@ print(sum([1, 2, 3, 4, 5], 10))
 print(sum([1, 2, 3, 4, 5], start=10))
 
 #%%
-#RETOMAR MAS DE 1 VALOR 
+#todo RETOMAR MAS DE 1 VALOR 
 def mult_div(num1, num2):
     #vamos a retormar el producto y la division, cada retorna se separa por una coma
     
@@ -130,7 +130,7 @@ print(m)
 print(d)
 
 #%%
-#PARAMETROS INFINITOS PARA UNA FUNCION
+#todo PARAMETROS INFINITOS PARA UNA FUNCION(DESEMPAQUETADO)
 
 
 #PRIMERO REVISEMOS COMO FUNCIONA EL OPERADOR SPLAT
@@ -149,7 +149,7 @@ print(suma_todo(1))
 print(suma_todo(1,2,3,4,5))
 
 #%%
- #FUNCIONES RECURSIVAS 
+ #TODO FUNCIONES RECURSIVAS (MASO)
  #NI LO MIRES 
  
 def factorial(n):
@@ -160,7 +160,8 @@ def factorial(n):
     
 print(factorial(5))
 
-#%%FUNCIONES ANONIMAS
+#%%
+#TODO FUNCIONES ANONIMAS
 
 def por_tres(n):
     return 3 * n
@@ -180,8 +181,11 @@ print(sumar(3,4))
 dividir = lambda x, y: x / y 
 print(dividir(10,3))
 
+suma_argvs = lambda *args : sum(args)
+print(suma_argvs(10,20,30))
+
 #%%
-#MAP PERMITE AFECTAR POR UNA OPERACION A TODOS LOS VALORES DE UNA LISTA 
+#todo MAP PERMITE AFECTAR POR UNA OPERACION A TODOS LOS VALORES DE UNA LISTA 
 
 lista = [1,2,3,4,5]
 for i in range(len(lista)):
@@ -200,13 +204,14 @@ lista = list(map(lambda x: x * 2, lista))
 print(lista)
 
 #%%
-#FILTER
-#NOS PERMITE FILTRAR LOS VALORES DE UNA LISTA 
+#todo FILTER NOS PERMITE FILTRAR LOS VALORES DE UNA LISTA 
+
 lista = [1,2,3,4,5,6,7,8,9]
 #VAMOS A FILTRAR SOLO LOS NUMEROS PARES
 i = 0 
 while i < len(lista):
     if lista[i] % 2 != 0:
+        
         lista.pop(i)
     i+=1
     
@@ -217,9 +222,11 @@ print(lista)
  
 #filter(fun, list)
 lista = [1,2,3,4,5,6,7,8,9]
-lista = list(filter(lambda x: x % 2 == 0, lista))
 print(lista)
-#%%
+print()
+lista1 = list(filter(lambda x: x % 2 == 0, lista))
+print(lista1)
+  #%%
 #PAQUETES
 #AQUI VAMOS A TENER UNA COLECCION DE FUNCIONEES QUE LAS PODEMOS EXPORTAR ( TODO EN UNA MISMA CARPETA )
 
