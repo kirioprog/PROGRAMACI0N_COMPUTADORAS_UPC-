@@ -1,4 +1,4 @@
-#En este apartado vamos a ver la teoria de python
+  #En este apartado vamos a ver la teoria de python
 #%%
 #imprimir mensajes utilizamos print
 # %%
@@ -13,7 +13,7 @@ print('hello, "word"')
 #escribiendo print? en el terminal puede consultar lo que pasa con print
 
 print(1, 2, 3, 4, 5)
-#TODO END  Y SEP   
+#TODO END  Y SEP     
 #vamos hacer que el separador sea ->
 #esto lo hacemos utilizando el argumento sep 
 print(1, 2, 3, 4, 5, sep='->')

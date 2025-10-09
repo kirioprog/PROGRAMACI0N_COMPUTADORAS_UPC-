@@ -133,7 +133,8 @@ while num > 0:
     print(num)
     num -=1
 #%%
-#todo TRY - EXCEPT
+#todo TRY - EXCEP
+#todo
 #voy a intentar algo almenos de que salga algho mal 
 edad = input("Ingrese su edad: ")
 try:

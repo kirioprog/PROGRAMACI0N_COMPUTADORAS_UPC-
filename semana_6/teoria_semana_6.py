@@ -3,13 +3,15 @@
 conjunto: set = {1, 2, 3, 4, 5, 2,  6, 7, 8}
 print(conjunto)
 #%%
-#convertir una lista en conjunto 
+#todo convertir una lista en conjunto 
 set([1,2,3,4,5, 6])
 #%%
+#TODO LOS CONJUNTOS SON ITERABLES 
+
 num = input("Ingrese un numero entero: ")
 
 numeros = set([n for n in num])
-
+#no que trato de hacer el profesor pero bueno xd 
 if len(num) == len(numeros):
     print("Digitos diferentes")
 
@@ -17,27 +19,27 @@ else:
     print("Hay digitos repetidos")
     
 #%%
-#obsefvasr los metodos disponibles son conjuntos (set )
+#todo obsefvasr los metodos disponibles son conjuntos (set )
 dir(set)
 #%%
-#Creamos un conjunto vacio para agregar los elementos  
+#todo Creamos un conjunto vacio para agregar los elementos  
 s = set()
 #voy agregar los elementos utilizando add, recuerda que en un cojnunto los elementos no tienen orden por ello no se van agregar en ese orden especificaamente 
 s.add(0)
 s.add(1)
-s.add(4)
+s.add(4)  
 s.add(10)
 print(s)
 #%%
-#descartar elementos de un conjunto 
+#todo descartar elementos de un conjunto 
 #entre los parentesis voy a colocar los elemkentos que voy a descartar de mi conjunto 
 s = {3,433,10,67,4,4,4,}
 s.discard(4)
 s.discard(10)
 print(s)
 #%%
-#extraer un valor aleatorio de mi conjunto 
-#lo vamos hacer con pop 
+#todo extraer un valor aleatorio de mi conjunto 
+#lo vamos hacer con pop, dice que es aleatorio porrque como los elementos no tienen un orden especifico por ello.  
 s = {3,33,10,67,4,4,4,}
 val: int = s.pop()
 
@@ -46,7 +48,7 @@ print(" Valor aleatorio es : ",val)
 print(s)
 
 #%%
-#OPERACIONES CON CONJUNTOS 
+#TODO OPERACIONES CON CONJUNTOS 
 
 pares = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20}
 mult_3 = {0, 3, 6, 9, 12, 15, 18, 21}
@@ -60,7 +62,7 @@ print(mult_5 | mult_3)
 #Diferencia  : imprima los elemenots que son pares  y quita os que son multiplos de 3 
 print(pares - mult_3)
 
-#Diferencia simetrica : imprima los multiplos de 3 y multiplos de 5 pero no aquellos que son ambos al mismo tiempo 
+#todo Diferencia simetrica : imprima los multiplos de 3 y multiplos de 5 pero no aquellos que son ambos al mismo tiempo 
 print(mult_3 ^ mult_5)
 #%%
 #LOS CONSJUNTOS SON ITERABLES OSE ALOS PUEDDO UTILIZASRT CON UN BUCLE FOR 

@@ -245,7 +245,7 @@ for nombre, edad in zip(nombres, edades):
  #%%    
 #todo M0DIFICAR LISTAS 
 
-l = [1, 2, 3, 4, 5]
+l = [1, 2, 3, 4, 5, 'A', 'A']
 #APPEND()
 #nos sirve para agregar un elementos al final de la lista 
 #estamos añadiendo 6 al final de la lista, no se puede poner dentro del print porque append no retorna nada
