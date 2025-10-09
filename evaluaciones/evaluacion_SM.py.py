@@ -26,5 +26,4 @@ for idx in range(0,len(frase)):
 else:
     print(f"\nPalabras con almenos una letra minuscula : {contador}")
       
-
-
+    

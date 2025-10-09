@@ -94,6 +94,8 @@ sorteo(24,8)
 sorteo(8,25)
 
 #%%DICCIONARIOS
+#todo
+#todo
 #llave : objeto 
 #considera la llave como tu indice, es casi la misma idea 
 #los diccionarios no tienen indice 
@@ -105,6 +107,7 @@ print("numero de elementos", len(diccionario))
 #agregar un elemento al diccionario 
 d = {}
 d['python']= 2001
+d['python']= 2002
 d['c++']= 1983
 d['javascrip'] = 1995
 print(d)
@@ -142,7 +145,7 @@ meses = {1: 'ene', 2: 'feb', 3: 'mar',
 #keys retorna una lista con todas las llaves del diccionario 
 for item in meses.keys():
     print(item)
-
+print(meses.keys())
 #Values retorna un alista con ltodos los valores del diccionario 
 for item in meses.values():
     print(item)

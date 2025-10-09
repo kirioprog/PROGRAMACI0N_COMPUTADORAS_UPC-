@@ -10,7 +10,6 @@ def palabrasUnicas(texto: list) ->int:
             conteo +=1
             
     return conteo
-            
 #%%
 def longPromedio(texto):
     """Retorna la longitud promedio de las palabras"""
