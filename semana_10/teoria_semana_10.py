@@ -3,7 +3,7 @@
 
 # %%
 # =============================================================================
-# Programación Orientada a Objetos - Parte 2
+# Programación Orientada a Objetos - Parte 2 OFICIAL 
 
 # %%
 

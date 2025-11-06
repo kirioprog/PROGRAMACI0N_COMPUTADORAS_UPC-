@@ -1,5 +1,5 @@
 # vamos a ignorar todos los jupyter 
-*.ipynb
+#*.ipynb
 !evaluaciones/**/*.ipynb 
 !Ejercicios-Semana*
 !Semana_05 - Strings y Gestión del tiempo.ipynb
