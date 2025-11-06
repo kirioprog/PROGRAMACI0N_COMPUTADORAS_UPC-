@@ -1,5 +1,5 @@
-#todo GESTIONAR LAS RUTAS EN PYTHON
-
+  #todo GESTIONAR LAS RUTAS EN PYTHON
+#LO INTERESANTE EMPIEZA EN EL TODO DOBLE 
 import os 
 
 #TODO CON OS HABLAMOS CON EL SISTEMA OPERATIVO 
@@ -50,6 +50,7 @@ print(os.listdir())
 
 #%%
 #todo ARCHIVOS TXT
+#todo ACA EMPIEZA LO INTERESANTE 
 
 #todo MODOS DE LECTURA Y DEMAS 
 #LEER UN ARCHIVO EXISTENTE
@@ -123,7 +124,8 @@ readline()
 #Retorna una lista con  las lineas del archivo, incluyendo \n al final de cada elemento
 readlines()
 #%%
-# Utilizemos los parametros por defecto: lectura, encoding estandar
+#todo
+#todo Utilizemos los parametros por defecto: lectura, encoding estandar
 with open("meses.txt", encoding='utf-8') as file:
     #recuerda que estrip recorta los espacios en blanco, tabulaciones y saltos de linea 
     print(file.readline().strip())
@@ -175,6 +177,7 @@ with open("numeros.txt", mode='r', encoding='utf-8') as file:
 #%%
 #%%
 #todo ARCHIVOS CSV 
+#todo
 
 #CSV significa "Valores Separados por Comas"
 #Es un archivo de texto plano para guardar datos como en Excel.
@@ -217,7 +220,7 @@ with open(filename, mode='w', newline='') as csv_file:
 
 print(f"Archivo generado: {filename}")
 #%%
-
+#todo
 #todo LEER UN ARCHIVO CSV (CON CSV.READER)
 import csv
 
@@ -226,7 +229,9 @@ import csv
 with open("entrada.csv") as file:
     
     #csv.reader() crea un objeto lector para iterar sobre las lineas
+    
     #delimiter=';' le dice cual es el separador que debe buscar
+    #============================================================
     reader = csv.reader(file, delimiter=';')
     
     #next(reader) # con esto pasamos a la siguiente linea: eliminamos el encabezado
@@ -239,6 +244,7 @@ with open("entrada.csv") as file:
         print(f"* Nombre: {line[1]:20} Hora de ingreso: {line[0]}")
 
 #%%
+#todo
 #todo LEER UN ARCHIVO CSV (CON CSV.DICTREADER)
 import csv
 

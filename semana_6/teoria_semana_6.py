@@ -8,7 +8,7 @@ set([1,2,3,4,5, 6])
 #%%
 #TODO LOS CONJUNTOS SON ITERABLES 
 
-num = input("Ingrese un numero entero: ")
+num = input("Ingrese un numeros enteros: ")
 
 numeros = set([n for n in num])
 #no que trato de hacer el profesor pero bueno xd 
@@ -93,9 +93,11 @@ def sorteo (n_bolos: int, n_sorted: int) ->list[int]:
 sorteo(24,8)
 sorteo(8,25)
 
-#%%DICCIONARIOS
+#%%
+#todo DICCIONARIOS
 #todo
-#todo
+#==========================
+
 #llave : objeto 
 #considera la llave como tu indice, es casi la misma idea 
 #los diccionarios no tienen indice 
@@ -136,7 +138,7 @@ persona['telefono'] = '983-343-432'
 print(persona)
 
 #%%
-#DICCIONARIO COMO UN ITERABLE 
+#TODO DICCIONARIO COMO UN ITERABLE 
 meses = {1: 'ene', 2: 'feb', 3: 'mar',
                          4: 'abr', 5: 'may', 6: 'jun',
                          7: 'jul', 8: 'ago', 9: 'set',
