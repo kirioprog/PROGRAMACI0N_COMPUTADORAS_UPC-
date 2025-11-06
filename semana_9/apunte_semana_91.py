@@ -1,662 +1,424 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# ¡Apuntes de OOP - PARTE 1! (Estilo pa' entender de verdad, sin tanto rollo xd)
+# La idea es simple: ¡juntar las cosas! En un objeto metes:
+# 1. Los datos (atributos).
+# 2. Las funciones (métodos) que usan esos datos.
+# Eso es OOP: Programación Orientada a Objetos.
 
-# %%
-# =============================================================================
-# Programación Orientada a Objetos - Parte 2
-# =================================================
-# %%
+#%%
+# TODO: QUE ES OOP - Definición simple
+# OOP = Programación Orientada a Objetos.
+# Es solo una forma de pensar/organizar el código (un "paradigma").
+# ¿Qué hace? Coge los datos y las funciones que los usan y los mete en una "caja" (el objeto).
+# Ejemplo: Un LÁPIZ (el objeto) tiene Propiedades/Datos (color, peso) y Acciones/Funciones (dibujar, borrar).
 
-# ¡La onda de Python con la POO es ser flexible! 🐍
-# A diferencia de otros lenguajes más estrictos (como Java o C#),
-# Python te deja hacer clases súper simples, casi sin reglas,
-# o agregarles toda la seguridad que quieras si es necesario.
-# Es parte de su filosofía de mantener el código simple y legible.
+#%%
+# TODO: isinstance - ¡El detector de tipos!
+t = 'hola'
+isinstance(t, str)    # Esto pregunta: ¿t es un objeto de la clase 'str' (string)? True.
+# USOS: Lo usamos muchísimo en los SETTERS (más abajo) para asegurarnos de que el usuario
+# no intente meternos un número donde esperamos un nombre, por ejemplo. ¡Para validar!
 
-# %%
-# =============================================================================
-# ## The Python Way (La forma de hacer las cosas en Python)
-# =============================================================================
+#%%
+# TODO: OBJETO - La unidad de trabajo
+# Un "objeto" es nuestra "caja" concreta. Piensa en él como:
+# 1. Un grupo de datos que le pertenecen (ATRIBUTOS).
+# 2. Un grupo de cosas que sabe hacer (MÉTODOS/Acciones).
+# Ejemplo:
+# Objeto LÁPIZ:
+# - ATRIBUTOS: color='rojo', punta='fina', peso=10gr
+# - MÉTODOS: dibujar(linea), afilar()
 
-# La idea clave es: "Confiamos en el programador".
-# Por defecto, los atributos de una clase son PÚBLICOS, no privados.
+#%%
+# TODO: CLASE - El molde (La Receta)
+# Una CLASE es el *molde* o la *receta* que usamos.
+# Define la ESTRUCTURA: dice qué atributos va a tener y qué métodos va a saber hacer.
+# Cuando ejecutas `mi_objeto = Clase()`, estás creando una INSTANCIA (la galleta).
 
-# En otros lenguajes, para cambiar un nombre, harías algo "seguro" como:
-# p1 = Persona()
-# p1.set_nombre('Alan')   <-- Usar un método "setter"
-# print(p1.get_nombre())  <-- Usar un método "getter"
+# Ejemplo con tu idea del Vehículo:
+# CLASE Vehiculo (El Molde Grande) -> Define: velocidad, color, peso, método acelerar().
+#                                     Sirve para crear clases hijas como VehiculoRuedas o Velero.
+# TERMINOLOGÍA CLAVE:
+# - Propiedades/Datos = ATRIBUTOS
+# - Acciones/Funciones = MÉTODOS
 
-# En Python, se prefiere la simpleza:
-# p1 = Persona()
-# p1.nombre = 'Alan'      <-- Asignación directa
-# print(p1.nombre)        <-- Lectura directa
+#%%
+# TODO: HERENCIA Y POLIMORFISMO - Conceptos Pro (¡Con el ejemplo del Vehículo!)
+# Estos son los superpoderes de OOP, ¡lo veremos luego!
 
-# Así que, vamos a definir la clase Persona de esta forma "simple".
-# %%
+# - HERENCIA 👨‍👩‍👧: Reutilización de código.
+#   Una clase "hija" copia todo de una clase "madre".
+#   Ej: La CLASE Auto y la CLASE Bicicleta NO tienen que definir 'color' o 'frenar()'.
+#       Ellas HEREDAN esas propiedades y métodos directamente de la CLASE Vehiculo.
+#       (Una CLASE VehiculosRuedas hereda de Vehiculo, y Auto/Bici heredan de VehiculosRuedas, ¡se pasa la posta!).
 
-# --- Clase Persona (Versión 1: Todo Público) ---
+# - POLIMORFISMO 🎭: El mismo método hace cosas diferentes.
+#   Significa "muchas formas". El método `acelerar()` existe en ambas clases, pero:
+#   Ej: Auto.acelerar() mueve un motor a gasolina.
+#   Ej: Bicicleta.acelerar() hace girar un par de piernas.
+#   El método se llama igual (`acelerar`), pero se "personaliza" para cada clase, ¡eso es Polimorfismo!
+
+#%%
+# TODO: AGENDA DE CONTACTOS - EL MODO VIEJO (Procedimental)
+# Así se haría sin OOP: datos sueltos (diccionarios) en una lista.
+# Lo haremos así para ver POR QUÉ OOP es mejor.
+
+contactos = [
+    {
+        'nombre': 'Dina Mita',
+        'telefono': '927-234-113',
+        'email': 'dmita@mail.com'
+    },
+    {
+        'nombre': 'Elvio Lado',
+        'telefono': '997-332-253',
+        'email': 'elado@mail.com'
+    },
+    {
+        'nombre': 'Elmer Curio',
+        'telefono': '927-234-113',
+        'email': 'ecurio@mail.com'
+    },
+    {
+        'nombre': 'Alan Brito',
+        'telefono': '345-1921',
+        'email': 'alan.brito@business.com'
+    }
+]
+
+# TODO: ACCEDER A LOS DATOS EN EL MODO VIEJO
+# Es fácil, pero no hay *protección* de datos (cero validación).
+# la lista contactos contiene diccionarios, cada uno es un contacto
+print(contactos[0])    # Primer contacto: la caja completa
+
+# para acceder a un valor específico usas la llave
+print(contactos[0]['nombre'])    # Leemos la llave 'nombre'
+print(contactos[0]['telefono'])  # Leemos la llave 'telefono'
+print(contactos[0]['email'])     # Leemos la llave 'email'
+
+#%%
+# TODO: FUNCIONES PARA EL MODO VIEJO
+# Fíjate que las funciones están separadas de la lista `contactos`.
+# Si cambiamos la estructura de los diccionarios, ¡hay que cambiar TODAS estas funciones!
+
+def agregar_contacto(contactos_list):
+    # esta función pide datos al usuario y y crea un dicionario que agrega sobre una lista de contactos (argumento de entrada) 
+    print("\nIngreso de contactos")
+    print("------------------------")
+    nombre = input("Ingrese nombre: ")
+    telefono = input("Ingrese telefono: ")
+    email = input("Ingrese email: ")
+    contactos_list.append({'nombre': nombre, 'telefono': telefono, 'email': email})
+    return None
+
+def listar_contactos(contactos_list):
+    # esta función barre los elementos de la lista e imprime de forma enumerada los contactos
+    print("\nInformacion de contactos")
+    print("------------------------")
+    for idx, contacto in enumerate(contactos_list, start=1):
+        print(f"\nCONTACTO {idx}:")
+        print(f"    Nombre: {contacto['nombre']}")
+        print(f"    Telefono: {contacto['telefono']}")
+        print(f"    Email: {contacto['email']}")
+
+# # ejemplo de app con menú (OJO: Aquí los datos no se protegen)
+# while True:
+# #       print("\nAgenda de contactos")
+# #       print("-----------------")
+# #       print("[1] Agregar contacto")
+# #       print("[2] Listar contactos")
+# #       print("[0] Salir")
+# #       opc = input("> : ")
+# #       if opc == '0':
+# #           break
+# #       elif opc == '1':
+# #           agregar_contacto(contactos)
+# #       elif opc == '2':
+# #           listar_contactos(contactos)
+# #       else:
+# #           print("Opcion invalida")
+
+#%%
+# TODO: CLASE Y OBJETO - Volvemos a la base
+# CLASE = El molde/receta
+# OBJETO = La cosa que creamos (INSTANCIA)
+
 class Persona:
-    """
-    Un molde simple para crear personas.
-    Versión 1: Todo público y directo.
-    """
+    pass    # 'pass' solo dice: "Aquí va código, pero ahora no tengo nada."
+
+persona1 = Persona()
+persona2 = Persona()
+
+print(persona1)
+print(persona2)
+# ¿Por qué salen cosas raras? <__main__.Persona object at 0x...>
+# Porque cada objeto es una cosa *única* en la memoria. Necesitamos __repr__ para que hablen claro.
+# cada instancia (objeto) ocupa su propio espacio en memoria( persona )
+
+#%%
+# TODO: CONSTRUCTOR - __init__ y SELF (Inicializando la caja)
+# El método `__init__` se llama automáticamente (es el constructor)
+# justo cuando haces `Persona()`. Es el encargado de darle los datos iniciales.
+
+# CLAVE: `self` es la referencia al *objeto* que se está construyendo AHORA.
+class Persona:
+    # self siempre va primero. Es el objeto `persona1` o `persona2` que se va a crear.
     def __init__(self):
-        """
-        El constructor. Se activa al crear la Persona (ej: p1 = Persona()).
-        Simplemente prepara los "cajones" (atributos) vacíos.
-        """
-        self.nombre = ''
-        self.telefono = ''
-        self.email = ''
-        
-    def __repr__(self):
-        """
-        El método mágico de "representación".
-        Le dice a Python cómo "imprimirse" bonito cuando haces print(obj).
-        """
-        return "Persona[nombre={}, telefono={}, email={}]".format(
-            self.nombre, self.telefono, self.email)
+        # Creamos el atributo interno (la propiedad) `_nombre`
+        # y le damos el valor inicial 'NN' (Nombre No Asignado).
+        # El guion bajo `_` es para decir: "Ojo, este dato es PRIVADO, usa Get/Set para tocarlo".
+        self._nombre = 'NN'
 
-# %%
-# --- Prueba de la Clase Persona (Versión 1) ---
-
-# Ojo: los atributos son `self.nombre` (público), no `self.__nombre` (privado).
-# Así que podemos asignar y leer los atributos directamente.
-
-print("--- Probando Persona v1 (Todo Público) ---")
-p1 = Persona()
-p1.nombre = 'Alan'  # Asignación directa. ¡Fácil!
-p1.telefono = '987-273-362'
-p1.email = 'alan@mail.com'
-
-print(p1)
-
-# Y podemos leerlos igual de fácil:
-print(f"Leyendo el nombre: {p1.nombre}")
-print(f"Leyendo el teléfono: {p1.telefono}")
-
-
-# %%
-# =============================================================================
-# ## Setter y Getters como Decoradores (¡La solución!)
-# =============================================================================
-
-# ¡Ups! El problema de la "confianza total" es que perdimos el CONTROL.
-# ¿Qué pasa si alguien hace esto?
-# %%
-
-# --- El Problema: Cero Control ---
-print("\n--- Probando el Problema (Sin Control) ---")
-try:
-    print(f"El nombre ANTES es: {p1.nombre}")
-    
-    # ¡Aquí está el error! No hay control sobre el TIPO de dato.
-    p1.nombre = 12345
-    
-    print(f"El nombre AHORA es: {p1.nombre}")
-    print("¡ERROR! Python nos dejó asignar un número a un nombre. 😭")
-except Exception as e:
-    # Esta clase simple no lanza error, pero ponemos el try por si acaso
-    print(f"Algo salió mal: {e}")
-
-# %%
-# Tenemos que recuperar el control (los setters) PERO sin perder
-# la simpleza de `p1.nombre = 'Alan'`.
-
-# La solución: ¡Decoradores! (@property)
-# Un Decorador es como "envolver" una función con otra para darle
-# súper-poderes.
-#
-# Es como ponerle un 'guardia de seguridad' (@) a la puerta (el método)
-# sin tener que cambiar la puerta en sí.
-#
-# Suena raro, pero mira qué útil es para getters y setters.
-# %%
-
-# --- Clase Persona (Versión 2: Con argumentos en __init__) ---
-# Primero, un pequeño ajuste: pasemos los datos al crearla, no después.
+#%%
+# TODO: REPRESENTACIÓN - __repr__ vs __str__ (Haciendo que la caja hable)
+# Estos métodos mágicos le dicen a Python cómo convertir el objeto en texto.
 
 class Persona:
-    def __init__(self, nombre='', telefono='', email=''):
-        # Esto todavía es asignación directa, ¡aún no hay setters!
-        self.nombre = nombre
-        self.telefono = telefono
-        self.email = email
+    def __init__(self):
+        self._nombre = 'NN'
         
+    def __str__(self):
+        # __str__: Se llama automáticamente cuando usas `print(objeto)`.
+        # Es para el USUARIO final.
+        return "Objeto Persona - Print (Soy amigable)"
+
     def __repr__(self):
-        return "Persona[nombre={}, telefono={}, email={}]".format(
-            self.nombre, self.telefono, self.email)
+        # __repr__: Se llama cuando escribes el nombre del objeto en la terminal.
+        # Es para el DESARROLLADOR (para hacer debugging, debe ser técnico).
+        return "Objeto Persona - Representacion (Soy técnico)"
 
-print("\n--- Probando Persona v2 (con __init__ mejorado) ---")
-p1_v2 = Persona('Alan', '987-373-173', 'alan@mail.com')
-print(p1_v2)
+persona1 = Persona()
+print(persona1) # Llama a __str__
 
-
-# %%
-# --- Clase Persona (Versión 3: ¡La Solución "Pythonica" con Decoradores!) ---
-# Ahora sí, agregamos el setter y getter para 'nombre'.
-# ¡Presta mucha atención a esto!
+# Si lo pones en la terminal sin print(), llama a __repr__
+# >>> persona1
+#%%
+# MEJORA de __repr__ (¡Mostrando el estado real!)
+# Normalmente definimos __repr__ para que nos muestre el valor actual del atributo.
+# Así es útil para ver los datos internos del objeto.
 
 class Persona:
-    def __init__(self, nombre, telefono, email):
-        # 1. ¡OJO! Cuando Python ve esto (`self.nombre = ...`),
-        # ya NO lo guarda directamente en un atributo llamado 'nombre'.
-        # Ahora, ¡BUSCA y EJECUTA el 'setter' (@nombre.setter) de abajo!
-        self.nombre = nombre
-        self.telefono = telefono
-        self.email = email
-        
-    @property               # <-- Este es el GETTER
-    def nombre(self):
-        """
-        El GETTER (Obtenedor). Se activa cuando 'lees' el valor.
-        (ej: `print(p1.nombre)`)
-        
-        Dice: "Oye, cuando alguien pida 'nombre', no busques un atributo.
-        Ejecuta esta función y devuelve el valor que está en la variable 
-        'privada' _nombre (con guion bajo)".
-        """
+    def __init__(self):
+        self._nombre = 'NN'
+    
+    def __repr__(self):
+        # Usamos .format() para inyectar el valor actual del atributo `self._nombre`
+        return "Persona:[nombre:'{}']".format(self._nombre)
+    
+persona1 = Persona()
+print(persona1) # Como no hay __str__, print() usa este __repr__.
+
+# ¡Esta es la base perfecta antes de los setters/getters!
+#%%
+# TODO: SETTER - nos peremite asignar un valor a un atributo de la clase 
+class Persona:
+    #inicializamos el atributo con un vacio ''
+    def __init__(self):
+        self._nombre = ''
+    def __repr__(self):
+        return "Persona:[nombre:'{}']".format(self._nombre)
+    
+#camb iar el valor del atributo protegido ( _nombre)
+#definimos un metodo que acepta 2 argumentos
+#val es el nuevo valor que quieres asignar a nombre 
+
+    def set_nombre(self, val):
+        #val contiene el nuevo valor que quieres asignar a nombre 
+        self._nombre = val 
+
+
+
+persona1 = Persona()
+#tomar el valor de val y asignarle al atributo interno self._nombre 
+persona1.set_nombre('Dennis')
+print(persona1)
+#%%
+#el set_persona solo deberia aceptar valores de clase str entonces agregemosle esa restriccion 
+class Persona:
+    def __init__(self):
+        self._nombre = ''
+    
+    def __repr__(self):
+        return "Persona:[nombre:'{}']".format(self._nombre)
+    
+    def set_nombre(self, val):
+        #verificamos que val sea str y que el primer valor no sea un espacio en blanco
+        if isinstance(val, str) and val[0] != ' ':
+            self._nombre = val
+        else:
+            #levantamos un error con raise Typerror 
+            raise TypeError("El atributo 'nombre' debe de ser un objeto 'str'")
+            
+persona1 = Persona()
+# persona1.set_nombre(1234) # Esto dará error
+# print(persona1)
+            
+            
+#%%
+# TODO: GETTER - método para LEER datos
+# el getter nos permite acceder a los valroes de una propiedad, osea de los atributos en especificos 
+
+
+class Persona:
+    def __init__(self):
+        self._nombre = ''
+    
+    def __repr__(self):
+        return "Persona:[nombre:'{}']".format(self._nombre)
+    
+    def set_nombre(self, val):
+        if isinstance(val, str):
+            self._nombre = val
+        else:
+            raise TypeError("El atributo 'nombre' debe de ser un objeto 'str'")
+
+#Acceder al valor del atribujo _nombre desde la terminal  
+    def get_nombre(self):
+        #Accedemos al atribujo interno y devuelve su valor actural 
         return self._nombre
     
-    @nombre.setter          # <-- Este es el SETTER
-    def nombre(self, var): # 'var' es el valor que intentas asignar (ej: 'Alan' o 12345)
-        """
-        El SETTER (Asignador). Se activa cuando 'escribes' un valor.
-        (ej: `p1.nombre = 'Alan'`)
-        
-        Dice: "¡Alto ahí! Antes de guardar, ¡primero valida el valor (var)!"
-        Es el guardia de seguridad.
-        """
-        # 2. La validación (el guardia):
-        if isinstance(var, str):
-            # 3. Si es un string, ¡adelante! Guárdalo en el atributo 'privado'.
-            self._nombre = var  # Nótese el guion bajo (_)
-        else:
-            # 4. Si no, ¡lanza un error! No dejes que pasen datos malos.
-            raise TypeError("El atributo 'nombre' debe ser un 'str'")
-            
-    # NOTA: Los otros atributos (telefono, email) siguen siendo públicos
-    # y no tienen este control (por ahora).
+    
+# ejemplo rápido
+persona1 = Persona()
+persona1.set_nombre("Alan")
+persona1.get_nombre()
+
+#%%
+# DEFINA COMPLETAMENTE LA CLASE PERSONA CON TODOS LOS ATRIBUTOS NECESARIOS
+# Y LOS SETTERS Y GETTERS CORRESPONDIENTES
+class Persona:
+    def __init__(self):
+        self._nombre = ''
+        self._telefono = ''
+        self._email = ''
     
     def __repr__(self):
-        # 5. El __repr__ ahora llama al GETTER (@property)
-        # automáticamente cuando pide 'self.nombre'.
-        return "Persona[nombre={}, telefono={}, email={}]".format(
-            self.nombre, self.telefono, self.email)
+        return "Persona:[nombre:'{}', telefono:{}, email:{}]".format(
+            self._nombre, self._telefono, self._email)
+    
+    def set_nombre(self, val):
+        # Validamos que el nombre contenga caracteres y espacios en blanco
+        if isinstance(val, str) and all([chars.isalpha() or chars.isspace() for chars in val]):
+            self._nombre = val
+        else:
+            raise TypeError("El atributo 'nombre' debe de ser un objeto 'str' y contener solo letras y espacios")
+            
+    def get_nombre(self):
+        return self._nombre
+    
+    def set_telefono(self, val):
+        if isinstance(val, str):
+            self._telefono = val
+        else:
+            raise TypeError("El atributo 'telefono' debe de ser un objeto 'str'")
+            
+    def get_telefono(self):
+        return self._telefono
+    
+    def set_email(self, val):
+        if isinstance(val, str) and '@' in val:
+            self._email = val
+        else:
+            raise TypeError("El atributo 'email' debe de ser un objeto 'str' y contener un '@'")
+            
+    def get_email(self):
+        return self._email
 
-# %%
-# --- Probando la Persona v3 (con Setters y Getters) ---
-print("\n--- Probando Persona v3 (Con Setters/Getters) ---")
+#%%
+# INSTANCIAMIENTO DE UN OBJETO CLASE PERSONA Y PRUEBA DEL OBJETO
+p1 = Persona()
+p1.set_nombre("Alan Brito")
+p1.set_telefono("987-282-821")
+p1.set_email("alan@mail.com")
 
-# Prueba 1: El camino feliz (funciona)
-# (Se activa el Setter en el __init__)
-p_segura = Persona("Ana", "123-456", "ana@mail.com")
-print(f"Objeto creado: {p_segura}")
+p1.get_nombre()
+p1.get_telefono()
+p1.get_email()
 
-# (Se activa el Getter)
-print(f"Leyendo el nombre (usa el Getter): {p_segura.nombre}")
+print(p1)
+#%%
+#verifiquemos excepciones 
 
-# Prueba 2: El camino triste (falla, ¡y eso es bueno!)
-print("\nIntentando asignar un número al nombre...")
+# ESTA CELDA DEBERIA DE GENERAR UNA EXCEPCION (Prueba de Telefono)
 try:
-    # (Se activa el Setter, pero fallará la validación)
-    p_segura.nombre = 999
+    p1_test_tel = Persona()
+    print("--- Prueba: Teléfono con tipo 'int' ---")
+    p1_test_tel.set_telefono(987112123)
 except TypeError as e:
-    print(f"¡ÉXITO! El Setter nos protegió. Error: {e}")
+    print(f"✅ EXCEPCIÓN ESPERADA: {e}")
 
-print(f"El nombre sigue siendo (gracias al Getter): {p_segura.nombre}")
+#%%
+# ESTA CELDA DEBERIA GENERAR UNA EXCEPCION (Prueba de Email)
+try:
+    p1_test_email = Persona()
+    print("--- Prueba: Email con tipo 'int' ---")
+    p1_test_email.set_email(12345)
+except TypeError as e:
+    print(f"✅ EXCEPCIÓN ESPERADA: {e}")
 
-# %%
-# =============================================================================
-# ## Clase en Python: Caso practico (Circulo)
-# =============================================================================
-# Vamos a aplicar todo esto a una clase 'Circulo'.
+#%%
+def ingresar_contacto():
+    contacto = Persona()
+    contacto.set_nombre(input("Ingrese nombre: "))
+    contacto.set_telefono(input("Ingrese telefono: "))
+    contacto.set_email(input("Ingrese email: "))
+    
+    return contacto
 
-# figuras.py  (from figuras import Circulo)
-class Circulo:
-    """
-    ¡Un molde para crear objetos Círculo! 🔵
+# (La función duplicada se elimina)
+
+def buscar_contacto(contactos_list):
+    # El argumento "contactos" es una lista de Personas: [Persona(), Persona(), ...]
+    found = False
+    nombre = input("Ingrese el nombre del contacto: ")
     
-    Define un círculo usando dos cosas clave:
-    1. Su radio (qué tan grande es).
-    2. Su origen (dónde está su centro en un plano 2D, como (x, y)).
-    """
-    def __init__(self, radio=1, origen=(0, 0)):
-        """
-        El constructor.
-        Cuando haces `self.radio = radio`, ¡se activa el SETTER de radio!
-        Cuando haces `self.origen = origen`, ¡se activa el SETTER de origen!
-        """
-        self.radio = radio
-        self.origen = origen
-    
-    def area(self):
-        """Calcula y devuelve el área del círculo (PI * radio^2)"""
-        return 3.1415 * self.radio ** 2
-    
-    def perimetro(self):
-        """Calcula y devuelve el perímetro (2 * PI * radio)"""
-        return 2 * 3.1415 * self.radio
-    
-    # --- GETTER para Radio ---
-    @property
-    def radio(self):
-        """GETTER: Permite 'leer' el valor de `obj.radio`"""
-        return self._radio
-    
-    # --- GETTER para Origen ---
-    @property
-    def origen(self):
-        """GETTER: Permite 'leer' el valor de `obj.origen`"""
-        return self._origen
-    
-    # --- SETTER para Radio ---
-    @radio.setter
-    def radio(self, val):
-        """SETTER: Valida ANTES de 'escribir' en `obj.radio = val`"""
-        if (isinstance(val, int) or isinstance(val, float)) and val > 0:
-            # ¡Pasa el control! Lo guardamos en el atributo "real" _radio
-            self._radio = val
-        else:
-            # ¡No pasa! Lanzamos error.
-            raise TypeError("La propiedad 'radio' debe ser un 'int' o 'float' mayor que 0")
-    
-    # --- SETTER para Origen ---
-    @origen.setter
-    def origen(self, val):
-        """SETTER: Valida ANTES de 'escribir' en `obj.origen = val`"""
-        if isinstance(val, tuple):
-            # Es una tupla, ahora vemos adentro...
-            if isinstance(val[0], int) or isinstance(val[0], float) and isinstance(val[1], int) or isinstance(val[1], float):
-                # ¡Pasa el control!
-                self._origen = val
-            else:
-                raise TypeError("Las coordandas de 'origen' debe ser numéricas")
-        else:
-            raise TypeError("La propiedad 'origen' debe ser una 'tuple'")
+    for contacto in contactos_list:
+        if nombre.upper() in contacto.get_nombre().upper():
+            print(contacto)
+            found = True
             
-    
-    # --- Métodos de Acción (Acciones del Círculo) ---
-    def mover_derecha(self, paso):
-        """Mueve el círculo a la derecha sumando al eje X."""
-        if isinstance(paso, int) or isinstance(paso, float):
-            # OJO: Esto llama al SETTER de 'origen'
-            self.origen = (self.origen[0] + paso, self.origen[1])
-        else:
-            raise TypeError("El paso debe ser numerico")
-    
-    def mover_izquierda(self, paso):
-        if isinstance(paso, int) or isinstance(paso, float):
-            self.origen = (self.origen[0] - paso, self.origen[1])
-        else:
-            raise TypeError("El paso debe ser numerico")
-    
-    def mover_arriba(self, paso):
-        if isinstance(paso, int) or isinstance(paso, float):
-            self.origen = (self.origen[0], self.origen[1] + paso)
-        else:
-            raise TypeError("El paso debe ser numerico")
-    
-    def mover_abajo(self, paso):
-        if isinstance(paso, int) or isinstance(paso, float):
-            self.origen = (self.origen[0], self.origen[1]- paso)
-        else:
-            raise TypeError("El paso debe ser numerico")
-    
-    def expandir(self, paso):
-        """Aumenta el radio. El SETTER de radio validará que siga > 0."""
-        if isinstance(paso, int) or isinstance(paso, float):
-            self.radio += paso
-        else:
-            raise TypeError("El paso debe ser numerico")
-    
-    def contraer(self, paso):
-        """Reduce el radio, con una validación extra."""
-        if isinstance(paso, int) or isinstance(paso, float):
-            # Validamos ANTES de asignar, para un error más específico
-            if self.radio - paso > 0:
-                self.radio -= paso
-            else:
-                raise ValueError("El paso no debe de generar un radio negativo")
-        else:
-            raise TypeError("El paso debe der numerico")
-    
-    def esta_dentro(self, x, y):
-        """Verifica si un punto (x, y) está dentro del círculo."""
-        return (x - self.origen[0])**2 + (y - self.origen[1])**2 <= self.radio ** 2
-    
-    def __repr__(self):
-        """Cómo se imprime el Círculo."""
-        return "Circulo[radio={}, origen={}]".format(self.radio, self.origen)
-    
-def main_circulo_test():
-    # --- Probando la clase Circulo ---
-    print("\n--- Probando la Clase Circulo (con Setters) ---")
-    try:
-        c1 = Circulo(radio=2, origen=(0, 0))
-        print(c1)
-        print(f"Área: {c1.area()}")
-        print(f"Perímetro: {c1.perimetro()}")
-        print(f"¿Está (1, 1) adentro?: {c1.esta_dentro(1, 1)}")
+    if not found:
+        print("No hay un contacto con ese nombre en la agenda")
         
-        c1.mover_abajo(1)
-        print(f"\nDespués de mover abajo: {c1.origen}")
-        print(f"¿Está (1, 1) adentro ahora?: {c1.esta_dentro(1, 1)}")
-        
-        # Prueba de error (radio negativo)
-        print("\nIntentando crear Círculo con radio negativo...")
-        c2 = Circulo(radio=-5)
-        print(c2) # No debería llegar aquí
-        
-    except (TypeError, ValueError) as e:
-        print(f"¡ÉXITO! El setter del Círculo nos protegió. Error: {e}")
 
-# Ejecutamos la prueba del círculo
-if __name__ == '__main__':
-    main_circulo_test()
-
-
-# %%
-# --- Creando muchos Círculos ---
-from random import randint
-
-print("\n--- Creando 10 Círculos Aleatorios ---")
-circulos = []
-for _ in range(10):
-    # Creamos 10 círculos con radios y orígenes aleatorios
-    circulos.append(Circulo(radio=randint(1, 10), origen=(randint(1, 10), randint(1, 10))))
-                    
-for circulo in circulos:
-    print(circulo)
-
-
-# %%
-# =============================================================================
-# ## Herencia y polimorfismo
-# =============================================================================
-#
-# ¡Poder de familia! 👨‍👩‍👧‍👦
-#
-# HERENCIA: Es la capacidad de una clase "Hija" de recibir (heredar)
-# todos los métodos y atributos de una clase "Padre".
-# (Ej: Una Camisa ES Ropa, así que hereda 'usar()' y 'lavar()').
-#
-# POLIMORFISMO: (literalmente "muchas formas"). Es la capacidad
-# de la clase "Hija" de REESCRIBIR (sobrescribir) un método del "Padre"
-# para que se comporte diferente.
-# (Ej: El __repr__ de Camisa es diferente al de Ropa, es más específico).
-#
-# %%
-
-# --- Herencia: La Clase "Padre" (Ropa) ---
-class Ropa:
-    """
-    El molde "Padre" o "Superclase".
-    Define las cosas que TODA la ropa tiene en común.
-    """
-    def __init__(self, nombre='', estaLimpia=True, vecesUsada=0, maxUsos=1):
-        self.nombre = nombre
-        self.estaLimpia = estaLimpia
-        self.vecesUsada = vecesUsada
-        self.maxUsos = maxUsos
-    
-    def __repr__(self):
-        """Cómo se imprime la Ropa."""
-        return "Ropa[nombre={}, estaLimpia={}, vecesUsada={}, maxUsos={}]".format(self.nombre, 
-                                                                                 self.estaLimpia,
-                                                                                 self.vecesUsada, 
-                                                                                 self.maxUsos)
-    
-    def usar(self):
-        """La acción de usar la prenda."""
-        self.vecesUsada += 1
-        if self.vecesUsada >= self.maxUsos:
-            # print(f"¡Ups! '{self.nombre}' ya está sucia.") # Opcional
-            self.estaLimpia = False
-        
-    def lavar(self):
-        """La acción de lavar la prenda."""
-        # print(f"Lavando '{self.nombre}'... ¡Quedó como nueva!") # Opcional
-        self.estaLimpia = True
-        self.vecesUsada = 0
-
-# %%
-# --- Probando la clase Ropa ---
-print("\n--- Probando la Clase Padre (Ropa) ---")
-jean = Ropa('Blue Jean', maxUsos=5)
-print(jean)
-
-# Usando la ropa
-print("\nUsando la ropa...")
-for _ in range(5):
-    jean.usar()
-    print(jean)
-    
-print("\nLavando la ropa...")
-jean.lavar()
-print(jean)
-
-# %%
-# --- Herencia: La Clase "Hija" (Camisa) ---
-
-class Camisa(Ropa): # <-- ¡Aquí ocurre la Herencia! (Camisa hereda de Ropa)
-    """
-    El molde "Hijo" o "Subclase".
-    Hereda TODO de Ropa (usar, lavar, __init__, etc.)
-    Pero añade algo nuevo: 'cuello'.
-    """
-    def __init__(self, nombre='', estaLimpia=True, vecesUsada=0, maxUsos=1, cuello=16):
-        
-        # 1. ¡Llamamos al constructor del "Padre" (Ropa)!
-        # `super()` es la forma de decir "mi súper-clase" (Ropa).
-        # Le pasamos los atributos que él ya sabe manejar.
-        super().__init__(nombre, estaLimpia, vecesUsada, maxUsos)
-        
-        # 2. Ahora, definimos el atributo NUEVO que solo 'Camisa' tiene.
-        self.cuello = cuello
-        
-    def __repr__(self):
-        # ¡POLIMORFISMO!
-        # Sobreescribimos el __repr__ del padre para añadir el cuello.
-        # Es "polimórfico" porque la misma función (print) llama a
-        # diferentes métodos __repr__ según el objeto.
-        return "Ropa[nombre={}, estaLimpia={}, vecesUsada={}, maxUsos={}, cuello={}]".format(self.nombre, 
-                                                                                 self.estaLimpia,
-                                                                                 self.vecesUsada, 
-                                                                                 self.maxUsos,
-                                                                                 self.cuello)
-
-# %%
-# --- Probando la Clase Hija (Camisa) ---
-print("\n--- Probando la Herencia (Camisa) ---")
-camisa = Camisa("camisa tonera", maxUsos=1)
-print(f"Recién creada: {camisa}")
-
-# ¡Podemos usar métodos del "Padre" (Ropa) aunque estemos
-# en un objeto "Hijo" (Camisa)!
-camisa.usar()
-print(f"\nDespués de usarla 1 vez: {camisa}")
-print(f"¿Está limpia? {camisa.estaLimpia}")
-
-
-# %%
-# --- El poder del Polimorfismo en listas ---
-print("\n--- Guardando todo en el 'ropero' (una lista) ---")
-
-ropero = []
-ropero.append(Ropa(nombre='Polo Negro', maxUsos=3))
-ropero.append(Camisa(nombre='Camisa Colegio', maxUsos=200)) # <-- Un objeto "Hijo"
-ropero.append(Ropa(nombre='Jean Negro', maxUsos=8))
-ropero.append(Ropa(nombre='Jean Azul', maxUsos=3))
-ropero.append(Ropa(nombre='Media de rombos'))
-ropero.append(Ropa(nombre='Polo deportivo', maxUsos=2))
-
-# ¡Python no se hace problemas!
-# Sabe que 'Camisa' ES-UN-TIPO-DE 'Ropa', así que los puede mezclar.
-#
-# Al imprimir, SÍ usa el __repr__ específico de cada uno.
-# ¡Eso es Polimorfismo en acción!
-for ropa in ropero:
-    print(ropa)
-
-
-# %%
-# =============================================================================
-# ## Más metodos mágicos (Dunders)
-# =============================================================================
-#
-# Son esos métodos con doble guion bajo (`__dunder__`).
-# Le enseñan a tus objetos a usar operadores básicos (+, -, *, ==, >).
-#
-# * `__add__(self, other)` : Le enseña a tu objeto a 'sumar' (+)
-# * `__sub__(self, other)` : Le enseña a tu objeto a 'restar' (-)
-# * `__mul__(self, other)` : Le enseña a tu objeto a 'multiplicar' (*)
-# * `__gt__(self, other)`  : Le enseña a tu objeto a 'comparar' (>) (Greater Than)
-# * `__eq__(self, other)`  : Le enseña a tu objeto a 'ser igual' (==) (Equal)
-# * `__floordiv__(self, other)`: Le enseña a usar la doble barra (//)
-
-# %%
-# --- Viendo los métodos mágicos de 'str' ---
-print("\n--- Métodos mágicos de un 'str' (string) ---")
-# Fíjate cuántos 'dunders' tiene un string.
-# ¡Por eso puedes hacer 'a' + 'b'! (porque usa __add__)
-# ¡Y por eso puedes hacer 'a' * 3! (porque usa __mul__)
-# print(dir(str)) # Descomenta esto para ver la lista larga
-print("... (muchos métodos como __add__, __mul__, __eq__, etc.) ...")
-
-
-# %%
-# --- Ejemplo: Clase Círculo (Versión 2: con Métodos Mágicos) ---
-# OJO: Esta es una *nueva* definición de Círculo.
-# Es más simple (sin setters) para enfocarnos en la magia.
-
-class Circulo:
-    """Circulo v2: Con métodos mágicos para operadores."""
-    
-    def __init__(self, radio=1, origen=(0, 0)):
-        self.radio = radio
-        self.origen = origen
-    
-    def area(self):
-        return 3.1415 * self.radio ** 2
-    
-    def perimetro(self):
-        return 2 * 3.1415 * self.radio
-
-    # --- Aquí empieza la magia ---
-    
-    def __add__(self, other):
-        """Define qué pasa si haces: `circulo + numero`"""
-        # print(f"Usando __add__ para sumar {other} al radio...")
-        # Creamos un NUEVO círculo con el radio más grande.
-        # 'other' es el número a la derecha del '+'
-        return Circulo(radio=self.radio + other, origen=self.origen)
-    
-    def __mul__(self, other):
-        """Define qué pasa si haces: `circulo * numero`"""
-        # print(f"Usando __mul__ para multiplicar el radio por {other}...")
-        # 'other' es el número a la derecha del '*'
-        return Circulo(radio=self.radio * other, origen=self.origen)
-    
-    def __gt__(self, other):
-        """
-        Define qué pasa si haces: `circulo1 > circulo2` (Greater Than)
-        Comparamos los radios.
-        'other' es el objeto a la derecha del '>'
-        """
-        # print(f"Comparando {self.radio} >= {other.radio}...")
-        return self.radio >= other.radio
+def listar_contactos(contactos):
+    # El argumento "contactos" es una lista de Personas: [Persona(), Persona(), ...]
+    if len(contactos) == 0:
+        print("No hay contactos que listar")
+    else:
+        print(f"Contactos en la lista: {len(contactos)}")
+        print()
+        for idx, contacto in enumerate(contactos):
+            print("   {}: {}".format(idx+1, contacto))
             
-    def __repr__(self):
-        return "Circulo[radio={}, origen={}]".format(self.radio, self.origen)
-
-# %%
-# --- Probando los operadores mágicos del Círculo ---
-print("\n--- Probando Círculo v2 (con Magia) ---")
-c1 = Circulo()
-print(f"Inicial: {c1}")
-
-# Esto llama a c1.__add__(1)
-c1 = c1 + 1
-print(f"Después de + 1: {c1}")
-
-# Esto llama a c1.__mul__(2)
-c1 = c1 * 2
-print(f"Después de * 2: {c1}")
-
-# --- Probando la comparación ---
-c_chico = Circulo(radio=1)
-c_grande = Circulo(radio=10)
-
-print(f"\nProbando comparaciones:")
-# Esto llama a c_grande.__gt__(c_chico)
-es_mas_grande = c_grande > c_chico
-print(f"¿Es {c_grande} > {c_chico}?  Respuesta: {es_mas_grande}")
-
-# Esto llama a c_chico.__gt__(c_grande)
-es_mas_grande = c_chico > c_grande
-print(f"¿Es {c_chico} > {c_grande}?  Respuesta: {es_mas_grande}")
 
 
-# %%
-# --- Caso Práctico Final: ¡Resistencias Eléctricas! ---
-# Vamos a usar métodos mágicos para simular un circuito.
-# %%
+# Cargamos un contacto base en la lista de contactos
+p = Persona()
+p.set_nombre("Alan")
+p.set_telefono("987-282-821")
+p.set_email("alan@mail.com")
+contactos = [p] # Renombro la lista para evitar conflicto con la procedimental
 
-class Resistencia:
-    """
-    Define una resistencia eléctrica.
-    Le enseñaremos a sumarse en serie (+) y en paralelo (//).
-    """
-    def __init__(self, valor=1, potencia=0.25):
-        self.valor = valor # en Ohms
-        self.potencia = potencia # en Watts
-     
-    def __add__(self, other):
-        """
-        Define la suma en SERIE: R_total = R1 + R2
-        Se activa con el operador '+'
-        """
-        # print("Suma en serie (+)")
-        return Resistencia(self.valor + other.valor)
+while True:
+    print("\nAgenda de contactos")
+    print("-----------------")
+    print("[1] Nuevo contacto")
+    print("[2] Buscar contactos")
+    print("[3] Mostrar todos")
+    print("[0] Salir")
+    opc = input("> ")
     
-    def __floordiv__(self, other):
-        """
-        Define la suma en PARALELO
-        Se activa con el operador '//' (¡lo estamos reutilizando!)
-        Fórmula: R_total = 1 / ( (1/R1) + (1/R2) )
-        """
-        # print("Suma en paralelo (//)")
-        # Calculamos el inverso de la suma de los inversos
-        req_inv = (1 / self.valor) + (1 / other.valor)
-        return Resistencia(1 / req_inv)
-    
-    def __repr__(self):
-        # {:.4f} formatea el número a 4 decimales
-        return "Resistencia: Val={:.4f} Ohms".format(self.valor)
-
-# %%
-# --- Probando la clase Resistencia ---
-print("\n--- Probando Resistencias Eléctricas ---")
-r1 = Resistencia(100)
-r2 = Resistencia(100)
-print(f"R1: {r1}")
-print(f"R2: {r2}")
-
-# Esto llama a r1.__add__(r2) (Suma en Serie)
-r_serie = r1 + r2
-print(f"Serie (R1 + R2): {r_serie}") # Debería dar 200 Ohms
-
-# Esto llama a r1.__floordiv__(r2) (Suma en Paralelo)
-r_paralelo = r1 // r2
-print(f"Paralelo (R1 // R2): {r_paralelo}") # Debería dar 50 Ohms
-
-# ¡Podemos encadenar operaciones!
-# 1. Se calcula (r1 // r2), que da una Resistencia de 50 Ohms
-# 2. El resultado (50 Ohms) se suma (+) con r2 (100 Ohms)
-# 3. El resultado final debe ser 150 Ohms
-print("\nProbando operación combinada: (R1 // R2) + R2")
-r_combinado = (r1 // r2) + r2
-print(f"Combinado: {r_combinado}")
-
-print("\n--- Fin del script ---")
+    if opc == '1':
+        try:
+            contactos.append(ingresar_contacto())
+        except (ValueError, TypeError) as e:
+            print(f"Ingreso inválido: {e}")
+    elif opc == '2':
+        buscar_contacto(contactos)
+    elif opc == '3':
+        listar_contactos(contactos)
+    elif opc == '0':
+        break
+    else:
+        print("Opcion invalida")
