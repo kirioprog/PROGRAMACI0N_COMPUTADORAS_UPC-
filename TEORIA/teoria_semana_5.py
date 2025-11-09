@@ -102,9 +102,8 @@ print(texto.strip().title().swapcase())
 #TODO METODOS ASOCIADOS A OCURRENCIAS EN UN STRING O SUBSTRING 
 #TODO
 
-texto = "este es un  texto de pruesba "
-#todo
-#todoCONTAR EL NUMEROI DE VECEZ QUE UN SUBSTRING ESTA EN UN STRING
+texto = "este es un  texto de prueba "
+#CONTAR EL NUMEROI DE VECEZ QUE UN SUBSTRING ESTA EN UN STRING
 print(texto.count("es"))
 #reemplaza un substring por otro , en este caso reemplazo es por no es 
 #OJO CON EL ESPACIO REEMPLAZA CON TODO ESO 

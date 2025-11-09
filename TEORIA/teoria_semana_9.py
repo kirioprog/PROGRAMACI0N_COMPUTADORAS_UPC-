@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# OOP - PARTE 1 
+# OOP - PARTE 1 (apunte style tuyo, sin formalismos xd)
 # en un objeto juntas datos (atributos) y funciones (métodos) que operan sobre esos datos
 # eso es OOP, programación orientada a objetos
 

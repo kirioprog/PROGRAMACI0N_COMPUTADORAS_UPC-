@@ -53,7 +53,6 @@ print(os.listdir())
 #todo ACA EMPIEZA LO INTERESANTE 
 
 #todo MODOS DE LECTURA Y DEMAS 
-#los modos son las iniciales de read, write, add que esto esta en ingles 
 #LEER UN ARCHIVO EXISTENTE
 mode = 'r'
 #ESCRIBIR EN UN ARCHIVO EXISTENTE O SINO EXISTE LO CREA
@@ -69,17 +68,15 @@ inte1 = 'utf-8'
 inte2 = 'latin-1'
 #%%
 meses: list[str] = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'set', 'oct', 'nov', 'dic']
-#ESTOS METODOS SON LENTOS, MAS ABAJO VES UN METODO QUE TE LO HACE TODO ESTO MAS RAPIDO 
 
-#todo Se abre el archivo de texto en modo escritura (si no existe se crea un archivo nuevo)
+# Se abre el archivo de texto en modo escritura (si no existe se crea un archivo nuevo)
 
 #PARA ABRIR EL ARCHIVO UTILIZAN OPEN(nombre de archivo, mode, intepretacion)
 file = open("meses.txt", mode='w', encoding='utf-8')
 
 # escribimos dentro del archivo con file.write
-
-for idx, etiqueta in enumerate(meses, start = 1):
-    file.write(f"{idx:2} {etiqueta} \n")
+for idx, etiqueta in enumerate(meses):
+    file.write(f"{idx+1:2} {etiqueta} \n")
 
 # Se cierra el archivo
 #guardamos y cerramos el archivo 
@@ -98,15 +95,14 @@ print(texto)
 
 #%%
 #todo CONTEXT MANAGER 
-#CREAR EL ARCHIVO Y AÑADIRLE CONTENIDO, lo cierra en automatico 
+#CREAR EL ARCHIVO Y AÑADIRLE CONTENIDO 
 
 # Creamos el cursor con un bloque with y cuando este termine el archivo se cerrara
 meses: list[str] = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'set', 'oct', 'nov', 'dic']
 
 with open("meses2.txt", mode='w', encoding='utf-8') as file:
-    
-    for idx, etiqueta in enumerate(meses, start = 1):
-        file.write(f"{idx:2} {etiqueta}\n")     # \n: Salto de linea
+    for idx, etiqueta in enumerate(meses):
+        file.write(f"{idx+1:2} {etiqueta}\n")     # \n: Salto de linea
  #%%       
 # No utilizaremos el modo ya que por defecto es 'r' (lectura)
 
@@ -143,7 +139,7 @@ with open("meses.txt", encoding = 'utf-8') as file:
 
 #el for va a leeer linea por linea 
     for line in file:
-#todo  LINE.STRIP
+
         print(line.strip()) 
         
 #%%
@@ -153,18 +149,16 @@ with open("numeros.txt", mode='w') as file:
         file.write(f"5 {num}\n")
         
 #Mostremos su informacion 
-with open("numeros.txt", encoding= 'utf-8') as file:
+with open("numeros.txt") as file:
     text: str = file.read()
 
 print(text)
 
-  #%%
+#%%
 #todo HACER OPERACION MATEMATICA CON UN ARCHIVO TXT
 with open("numeros.txt") as file:
     for line in file:
-        #desempaquetamos cada fila  pero quitaqndo los saltos de linea el split para para separarlas en una lista
-        #recuerdaq que el strip elimina los espacios en blanco 
-        #en line se albega el contenido de cada fila 
+        #desempaquetamos cada fila  pero quitaqndo los saltos de linea el split para para separarlas en una lista 
         num1, num2 = line.strip().split()
         print(f"{num1} x {num2} = {int(num1) * int(num2)}")
         
@@ -208,7 +202,7 @@ filename: str = "entrada.csv"
 
 #abrimos el archivo
 #mode='w' es para escribir (crea el archivo si no existe)
-#TODO newline='' es para evitar lineas en blanco dobles en Windows
+#newline='' es para evitar lineas en blanco dobles en Windows
 with open(filename, mode='w', newline='') as csv_file:
     
     #csv.writer() crea un objeto escritor sobre el archivo

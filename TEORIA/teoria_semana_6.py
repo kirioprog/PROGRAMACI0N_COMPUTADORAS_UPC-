@@ -1,7 +1,6 @@
 # CONJUNTO
 #en un conjunto los elementos que la conforman no tiene un orden en especifico y estos solo se pueden repetir una sola vez en el conjunto 
 conjunto: set = {1, 2, 3, 4, 5, 2,  6, 7, 8}
-
 print(conjunto)
 #%%
 #todo convertir una lista en conjunto 
@@ -37,13 +36,11 @@ print(s)
 s = {3,433,10,67,4,4,4,}
 s.discard(4)
 s.discard(10)
-s.discard(433)
 print(s)
 #%%
 #todo extraer un valor aleatorio de mi conjunto 
-#lo vamos hacer con pop, dice que es aleatorio porrque como los elementos no tienen un orden especifico por ello.:
+#lo vamos hacer con pop, dice que es aleatorio porrque como los elementos no tienen un orden especifico por ello.  
 s = {3,33,10,67,4,4,4,}
-#estamoos especificanod el el valor aleatorio a extraer es de tipo int 
 val: int = s.pop()
 
 print(" Valor aleatorio es : ",val)
@@ -73,8 +70,8 @@ print()
 for element in {1,2 ,3 ,4 ,5, 5}:
     print(element)
     #%%
-#todo
-#todo VAMOS A CREAR UN JUEGO DE LOTERIA 
+
+#VAMOS A CREAR UN JUEGO DE LOTERIA 
 
 from random import randint 
 
@@ -115,7 +112,6 @@ d['python']= 2001
 d['python']= 2002
 d['c++']= 1983
 d['javascrip'] = 1995
-d['sin_lenguaje'] = 101
 print(d)
   
 
@@ -123,12 +119,10 @@ print(d)
 #que nos arroje el valor de una llave 
 print()
 diccionario['c']
-d['sin_lenguaje']
 print("el valor de año en que se creeo python es:", diccionario['c'])
-print("el valor de sin lengauje es ",d['sin_lenguaje'])
 
 #%%
-#TODO El diccionario 'persona' almacena cada dato de una persona en llaves
+# El diccionario 'persona' almacena cada dato de una persona en llaves
 persona: dict[str, str] = {'nombre': 'Elvio',
                            'apellido': 'Lado',
                            'edad': 20,
@@ -142,7 +136,6 @@ print(persona['nombre'] + ' ' + persona['apellido'])
 #ahora supongamos que queremos cambiar el tefelono de la persona
 persona['telefono'] = '983-343-432'
 print(persona)
-print("El telefono de la persona es ",persona['telefono'])
 
 #%%
 #TODO DICCIONARIO COMO UN ITERABLE 
@@ -159,7 +152,7 @@ print(meses.keys())
 for item in meses.values():
     print(item)
     
-##todo items retorna una tupla con todos los pares (llave, valor)
+#items retorna una tupla con todos los pares (llave, valor)
 for item in meses.items():
     print(item)
 
@@ -173,7 +166,7 @@ meses = {1: 'ene', 2: 'feb', 3: 'mar',
                          4: 'abr', 5: 'may', 6: 'jun',
                          7: 'jul', 8: 'ago', 9: 'set',
                          10: 'oct', 11: 'nov', 12: 'dic'}
-#todo extraer el valor de un diccionario a partir de una llave 
+#extraer el valor de un diccionario a partir de una llave 
 val = meses.pop(10)
 print(val)
 print(meses)
@@ -189,7 +182,6 @@ meses_n: list[str] = ['ene', 'feb', 'mar', 'abr', 'may', 'jun',
 meses_d: list[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 meses = dict(zip(meses_d, meses_n))
-
 print(meses)
 
 #%%
@@ -213,7 +205,7 @@ print(3 in meses)
 print('enero' in meses)
 #%%
 
-#todo LISTAS EN  UN DICCIONARIO 
+#LISTAS EN  UN DICCIONARIO 
 
 leng_prog = {'juan': ['Python'],
              'maria': ['C', 'C++'],
@@ -221,7 +213,6 @@ leng_prog = {'juan': ['Python'],
              'clodoaldo': ['Assembler', 'Haskell'],
              'rosa': ['Python', 'VisualBasic']
              }
-#print(leng_prog['juan'])
 
 # El lazo for extrae los pares (llave, valor) con el metodo items()
 for nombre, lenguajes in leng_prog.items():
@@ -234,7 +225,7 @@ for nombre, lenguajes in leng_prog.items():
         print()
         
 #%%
-#todo DICCIONARIO EN LISTAS 
+#DICCIONARIO EN LISTAS 
 
 # alumnos[0]['apellido']
 alumnos = [{'nombre': 'Elvio',
@@ -248,7 +239,6 @@ alumnos = [{'nombre': 'Elvio',
             'email': 'mjimenez@mail.com',
            },
           ]
-
 
 for idx, alumno in enumerate( alumnos, start = 1):
     print("Alumno:", idx)
