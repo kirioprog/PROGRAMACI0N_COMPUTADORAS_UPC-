@@ -97,7 +97,7 @@ print(contactos[0]['nombre'])    # Nombre del primer contacto de la lista
 print(contactos[0]['telefono'])  # Teléfono del primer contacto de la lista
 print(contactos[0]['email'])     # Email del primer contacto de la lista
 
-#%%
+ #%%
 # TODO: FUNCIONES PARA LA AGENDA PROCEDIMENTAL
 
 def agregar_contacto(contactos):
@@ -107,6 +107,7 @@ def agregar_contacto(contactos):
     nombre = input("Ingrese nombre: ")
     telefono = input("Ingrese telefono: ")
     email = input("Ingrese email: ")
+    #todo añadir un contactor a una lista diccionario 
     contactos.append({'nombre': nombre, 'telefono': telefono, 'email': email})
     return None
 
@@ -140,6 +141,7 @@ while True:
 #%%
 # TODO: CLASE Y OBJETO - ejemplo básico
 # clase = plantilla. objeto = instancia.
+#no entiendo para que sirve 
 
 class Persona:
     pass   # pass significa "aún no hay contenido, pero la clase existe"
@@ -153,6 +155,7 @@ print(persona2)
 # cada instancia (objeto) ocupa su propio espacio en memoria( persona )
 
 #%%
+#todo
 # TODO: CONSTRUCTOR - __init__ y SELF
 # cuando haces Persona() se ejecuta automáticamente EL METODO  __init__
 
@@ -186,7 +189,7 @@ print(persona1)
 
 #ahora ingresa persona1 en la terminal y se invocara a persona 1 eso es lo que hace repr 
 #%%
-#REDEFINIMOS LA CLASE  para que ambas acciones repr y init retornen lo mismo 
+#todo REDEFINIMOS LA CLASE  para que ambas acciones repr y init retornen lo mismo 
 class Persona:
     def __init__(self):
         self._nombre = 'NN'
@@ -209,7 +212,7 @@ class Persona:
         return "Persona:[nombre:'{}']".format(self._nombre)
     
 #camb iar el valor del atributo protegido ( _nombre)
-#definimos un metodo que acepta 2 argumentos
+# todo definimos un metodo que acepta 2 argumentos
 #val es el nuevo valor que quieres asignar a nombre 
 
     def set_nombre(self, val):
@@ -262,7 +265,7 @@ class Persona:
         else:
             raise TypeError("El atributo 'nombre' debe de ser un objeto 'str'")
 
-#Acceder al valor del atribujo _nombre desde la terminal  
+#TODO Acceder al valor del atribujo _nombre desde la terminal  
     def get_nombre(self):
         #Accedemos al atribujo interno y devuelve su valor actural 
         return self._nombre
@@ -272,6 +275,7 @@ class Persona:
 persona1 = Persona()
 persona1.set_nombre("Alan")
 persona1.get_nombre()
+print(persona1)
 
 #%%
 # DEFINA COMPLETAMENTE LA CLASE PERSONA CON TODOS LOS ATRIBUTOS NECESARIOS
@@ -287,6 +291,7 @@ class Persona:
             self._nombre, self._telefono, self._email)
     
     def set_nombre(self, val):
+        #all devuelve true si todos los elementos de la lista son verdaderos 
         # Validamos que el nombre contenga caracteres y espacios en blanco
         if isinstance(val, str) and all([chars.isalpha() for chars in val.split()]):
             self._nombre = val
