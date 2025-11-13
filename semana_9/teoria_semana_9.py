@@ -7,7 +7,7 @@
 # TODO: QUE ES OOP
 # OOP = Programación Orientada a Objetos
 # es un paradigma (forma de pensar) donde integras datos y funciones en una sola unidad: el objeto
-# por ejemplo: un objeto lápiz tiene propiedades (color, punta, peso) y acciones (mover, subir, bajar)
+#todo  por ejemplo: un objeto lápiz tiene propiedades (color, punta, peso) y acciones (mover, subir, bajar)
 
 #%%
 # TODO: isinstance para verificar tipos
@@ -17,7 +17,7 @@ isinstance(t, str)   # True -> t es un objeto clase str
 
 #%%
 # TODO: OBJETO - definición práctica
-# ¿Cómo definiría un "objeto"? En programación:
+#todo  ¿Cómo definiría un "objeto"? En programación:
 # - Un objeto es algo que tiene un conjunto de propiedades (atributos)
 # - Un objeto es algo que puede realizar distintas acciones (métodos)
 
@@ -26,7 +26,7 @@ isinstance(t, str)   # True -> t es un objeto clase str
 # acciones: mover en plano, subir, bajar
 
 #%%
-# TODO: CLASE - definición
+# TODO: CLASE - definición- 
 # una clase es un prototipo que define TODOS los atributos y acciones de un objeto
 # es la plantilla (receta) para crear (instanciar) un objeto
 
@@ -166,16 +166,19 @@ print(persona2)
 class Persona:
     # self es el objerto que se esta creando a partir de la clase persona 
     def __init__(self):
-#creamos sun atributo(propiedad)) llamada nombre que pertenecera al objeto self y le damos el valor inicial de NN
+# todo creamos sun atributo(propiedad)) llamada nombre que pertenecera al objeto self y le damos el valor inicial de NN
         self._nombre = 'NN'
 
 #%%
+
+#todo
 # TODO: REPRESENTACIÓN - __repr__    __str__para mostrar el objeto
 
 class Persona:
     def __init__(self):
         self._nombre = 'NN'
-        
+    
+    #el que vamos a utilzar con  mas frecuencia 
     def __str__(self):
         # se llama automaticamente cuando utilizas print 
         return "Objeto Persona - Print"
@@ -203,6 +206,7 @@ print(persona1)
 #ingresamos persona1 en la terminal y te retornara lo mismo 
 
 #%%
+#todo
 # TODO: SETTER - nos peremite asignar un valor a un atributo de la clase 
 class Persona:
     #inicializamos el atributo con un vacio ''
@@ -235,7 +239,7 @@ class Persona:
         return "Persona:[nombre:'{}']".format(self._nombre)
     
     def set_nombre(self, val):
-        #verificamos que val sea str y que el primer valor no sea un espacio en blanco
+        #todo verificamos que val sea str y que el primer valor no sea un espacio en blanco
         if isinstance(val, str) and val[0] != ' ':
             self._nombre = val
         else:
@@ -248,8 +252,9 @@ print(persona1)
             
             
 #%%
+
 # TODO: GETTER - método para LEER datos
-# el getter nos permite acceder a los valroes de una propiedad, osea de los atributos en especificos 
+# todo el getter nos permite acceder a los valroes de una propiedad, osea de los atributos en especificos 
 
 
 class Persona:
@@ -374,7 +379,7 @@ def buscar_contacto(contactos):
 
 def listar_contactos(contactos):
     # El argumento "contactos" es una lista de Personas: [Persona(), Persona(), ...]
-    if len(contactos) == 0:
+        if len(contactos) == 0:
         print("No hay contactos que listar")
     else:
         print(f"Contactos en la lista: {len(contactos)}")

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # %%
-# =============================================================================
+# ============================================================================= 
 # Programación Orientada a Objetos - Parte 2 OFICIAL 
 
 # %%
@@ -58,7 +58,7 @@ class Persona:
             self.nombre, self.telefono, self.email)
 
 # %%
-# --- Prueba de la Clase Persona (Versión 1) ---
+# todo--- Prueba de la Clase Persona (Versión 1) ---
 
 # Ojo: los atributos son `self.nombre` (público), no `self.__nombre` (privado).
 # Así que podemos asignar y leer los atributos directamente.
@@ -102,9 +102,9 @@ except Exception as e:
 # %%
 # Tenemos que recuperar el control (los setters) PERO sin perder
 # la simpleza de `p1.nombre = 'Alan'`.
-
-# La solución: ¡Decoradores! (@property)
-# Un Decorador es como "envolver" una función con otra para darle
+#
+# todoLa solución: ¡Decoradores! (@property)
+# todo Un Decorador es como "envolver" una función con otra para darle
 # súper-poderes.
 #
 # Es como ponerle un 'guardia de seguridad' (@) a la puerta (el método)
@@ -112,7 +112,8 @@ except Exception as e:
 #
 # Suena raro, pero mira qué útil es para getters y setters.
 # %%
-
+#TODO UN METODO MUCHO MEJOR ! 
+#TODO
 # --- Clase Persona (Versión 2: Con argumentos en __init__) ---
 # Primero, un pequeño ajuste: pasemos los datos al crearla, no después.
 
@@ -133,15 +134,15 @@ print(p1_v2)
 
 
 # %%
-# --- Clase Persona (Versión 3: ¡La Solución "Pythonica" con Decoradores!) ---
-# Ahora sí, agregamos el setter y getter para 'nombre'.
+# TODO--- Clase Persona (Versión 3: ¡La Solución "Pythonica" con Decoradores!) ---
+# todo Ahora sí, agregamos el setter y getter para 'nombre'.
 # ¡Presta mucha atención a esto!
 
 class Persona:
     def __init__(self, nombre, telefono, email):
         # 1. ¡OJO! Cuando Python ve esto (`self.nombre = ...`),
         # ya NO lo guarda directamente en un atributo llamado 'nombre'.
-        # Ahora, ¡BUSCA y EJECUTA el 'setter' (@nombre.setter) de abajo!
+        #TODO Ahora, ¡BUSCA y EJECUTA el 'setter' (@nombre.setter) de abajo!
         self.nombre = nombre
         self.telefono = telefono
         self.email = email
@@ -185,7 +186,7 @@ class Persona:
             self.nombre, self.telefono, self.email)
 
 # %%
-# --- Probando la Persona v3 (con Setters y Getters) ---
+# todo--- Probando la Persona v3 (con Setters y Getters) ---
 print("\n--- Probando Persona v3 (Con Setters/Getters) ---")
 
 # Prueba 1: El camino feliz (funciona)
@@ -194,6 +195,7 @@ p_segura = Persona("Ana", "123-456", "ana@mail.com")
 print(f"Objeto creado: {p_segura}")
 
 # (Se activa el Getter)
+#ponemos el nombre modificado de la class.propiedad
 print(f"Leyendo el nombre (usa el Getter): {p_segura.nombre}")
 
 # Prueba 2: El camino triste (falla, ¡y eso es bueno!)
@@ -207,10 +209,10 @@ except TypeError as e:
 print(f"El nombre sigue siendo (gracias al Getter): {p_segura.nombre}")
 
 # %%
-# =============================================================================
-# ## Clase en Python: Caso practico (Circulo)
-# =============================================================================
-# Vamos a aplicar todo esto a una clase 'Circulo'.
+#todo =============================================================================
+# #TODO Clase en Python: Caso practico (Circulo)
+#todo =============================================================================
+#todo Vamos a aplicar todo esto a una clase 'Circulo'.
 
 # figuras.py  (from figuras import Circulo)
 class Circulo:
@@ -242,6 +244,7 @@ class Circulo:
     @property
     def radio(self):
         """GETTER: Permite 'leer' el valor de `obj.radio`"""
+        #TODO EN EL PROPERTY CUANDO RETORNAS TIENE QUE SER DIFERENTE, NO self.radio SINO SELF._RADIO
         return self._radio
     
     # --- GETTER para Origen ---
@@ -251,11 +254,13 @@ class Circulo:
         return self._origen
     
     # --- SETTER para Radio ---
+   #TODO RECUERDA QUE EL SETTER ES PARA VALIDAD DATOS, NO RETORNAR , PARA RETORNAR ESTAN LAS FUNCIONES  
     @radio.setter
     def radio(self, val):
         """SETTER: Valida ANTES de 'escribir' en `obj.radio = val`"""
         if (isinstance(val, int) or isinstance(val, float)) and val > 0:
             # ¡Pasa el control! Lo guardamos en el atributo "real" _radio
+            #todo EL DATO CAMBIADO OSEA EN ESTA CASO VAL TAMBIEN TIENE QUE IGUALAR A SELF._RADIO no a self.radio 
             self._radio = val
         else:
             # ¡No pasa! Lanzamos error.
@@ -276,7 +281,9 @@ class Circulo:
             raise TypeError("La propiedad 'origen' debe ser una 'tuple'")
             
     
-    # --- Métodos de Acción (Acciones del Círculo) ---
+    # TODO--- Métodos de Acción (Acciones del Círculo) ---
+    #CON LAS FUCNIONES PODEMOS RETORNAR O EJERCUTAR AR5CCIONES 
+    # TODO  ESTE METODO ES MUY PRACTICO, COPY PAGE
     def mover_derecha(self, paso):
         """Mueve el círculo a la derecha sumando al eje X."""
         if isinstance(paso, int) or isinstance(paso, float):
@@ -299,6 +306,7 @@ class Circulo:
     
     def mover_abajo(self, paso):
         if isinstance(paso, int) or isinstance(paso, float):
+            #PONGO SELF.ORIGEN[1] ESTE SERIA EL EJE Y 
             self.origen = (self.origen[0], self.origen[1]- paso)
         else:
             raise TypeError("El paso debe ser numerico")
@@ -329,16 +337,21 @@ class Circulo:
         """Cómo se imprime el Círculo."""
         return "Circulo[radio={}, origen={}]".format(self.radio, self.origen)
     
+    
+    
 def main_circulo_test():
     # --- Probando la clase Circulo ---
     print("\n--- Probando la Clase Circulo (con Setters) ---")
     try:
         c1 = Circulo(radio=2, origen=(0, 0))
         print(c1)
+        #SOLO LLAMA A LA FUNCION 
         print(f"Área: {c1.area()}")
         print(f"Perímetro: {c1.perimetro()}")
         print(f"¿Está (1, 1) adentro?: {c1.esta_dentro(1, 1)}")
         
+        #TODO SE LLAMA A LA FUCNION DESDE AFUERA CUANDO ESTA REALIZA UNA ACCION 
+        #TODO  CUANDO ESTA SOLAMENTE RETORNA UN VALOR LA PUEDES LLAMAR DESDE UN F-STRING
         c1.mover_abajo(1)
         print(f"\nDespués de mover abajo: {c1.origen}")
         print(f"¿Está (1, 1) adentro ahora?: {c1.esta_dentro(1, 1)}")
@@ -356,7 +369,7 @@ if __name__ == '__main__':
     main_circulo_test()
 
 
-# %%
+ # %%
 # --- Creando muchos Círculos ---
 from random import randint
 
@@ -429,6 +442,7 @@ print(jean)
 # Usando la ropa
 print("\nUsando la ropa...")
 for _ in range(5):
+    # TODO ojo: LLAMAR A LA FUNCION ANTES 
     jean.usar()
     print(jean)
     
@@ -437,7 +451,8 @@ jean.lavar()
 print(jean)
 
 # %%
-# --- Herencia: La Clase "Hija" (Camisa) ---
+#TODO
+# TODO--- Herencia: La Clase "Hija" (Camisa) ---
 
 class Camisa(Ropa): # <-- ¡Aquí ocurre la Herencia! (Camisa hereda de Ropa)
     """
@@ -450,6 +465,7 @@ class Camisa(Ropa): # <-- ¡Aquí ocurre la Herencia! (Camisa hereda de Ropa)
         # 1. ¡Llamamos al constructor del "Padre" (Ropa)!
         # `super()` es la forma de decir "mi súper-clase" (Ropa).
         # Le pasamos los atributos que él ya sabe manejar.
+        #ESTOS SON LOS ATRIBUTOS QUE TENIA ROPA 
         super().__init__(nombre, estaLimpia, vecesUsada, maxUsos)
         
         # 2. Ahora, definimos el atributo NUEVO que solo 'Camisa' tiene.
@@ -469,6 +485,7 @@ class Camisa(Ropa): # <-- ¡Aquí ocurre la Herencia! (Camisa hereda de Ropa)
 # %%
 # --- Probando la Clase Hija (Camisa) ---
 print("\n--- Probando la Herencia (Camisa) ---")
+#todo maxUsos = 1 estamos indicado que el maximo de usos es 1 
 camisa = Camisa("camisa tonera", maxUsos=1)
 print(f"Recién creada: {camisa}")
 
@@ -480,7 +497,8 @@ print(f"¿Está limpia? {camisa.estaLimpia}")
 
 
 # %%
-# --- El poder del Polimorfismo en listas ---
+# todo --- El poder del Polimorfismo en listas ---
+#TODO EJERCICIO PRACTICO 
 print("\n--- Guardando todo en el 'ropero' (una lista) ---")
 
 ropero = []
@@ -502,11 +520,11 @@ for ropa in ropero:
 
 # %%
 # =============================================================================
-# ## Más metodos mágicos (Dunders)
+# ##TODO  Más metodos mágicos (Dunders)
 # =============================================================================
 #
 # Son esos métodos con doble guion bajo (`__dunder__`).
-# Le enseñan a tus objetos a usar operadores básicos (+, -, *, ==, >).
+#TODO Le enseñan a tus objetos a usar operadores básicos (+, -, *, ==, >).
 #
 # * `__add__(self, other)` : Le enseña a tu objeto a 'sumar' (+)
 # * `__sub__(self, other)` : Le enseña a tu objeto a 'restar' (-)
@@ -526,9 +544,9 @@ print("... (muchos métodos como __add__, __mul__, __eq__, etc.) ...")
 
 
 # %%
-# --- Ejemplo: Clase Círculo (Versión 2: con Métodos Mágicos) ---
-# OJO: Esta es una *nueva* definición de Círculo.
-# Es más simple (sin setters) para enfocarnos en la magia.
+#TODO --- Ejemplo: Clase Círculo (Versión 2: con Métodos Mágicos) ---
+#TODO OJO: Esta es una *nueva* definición de Círculo.
+#TODO Es más simple (sin setters) para enfocarnos en la magia.
 
 class Circulo:
     """Circulo v2: Con métodos mágicos para operadores."""
@@ -543,7 +561,7 @@ class Circulo:
     def perimetro(self):
         return 2 * 3.1415 * self.radio
 
-    # --- Aquí empieza la magia ---
+    #TODO --- Aquí empieza la magia ---
     
     def __add__(self, other):
         """Define qué pasa si haces: `circulo + numero`"""
