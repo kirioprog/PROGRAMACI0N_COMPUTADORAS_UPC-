@@ -2,7 +2,6 @@
 # ==================================
 # %% Semana 11: NumPy
 # ==================================
-# Autor: Luis A. Muñoz - 2024
 
 # ---
 # ¿Qué onda con NumPy?
@@ -10,11 +9,6 @@
 # NumPy es como la navaja suiza de Python para todo lo que sea números.
 # Le da a Python "superpoderes" para manejar listas de números (vectores)
 # y tablas (matrices) de forma súper rápida.
-#
-# Fue creado por Travis Oliphant en 2005, juntando lo mejor de dos
-# librerías anteriores. Es la base de casi todo el análisis de datos
-# en Python. Es open source (¡gratis!).
-# ---
 
 # ---
 # El "Stack" Científico de Python
@@ -29,7 +23,7 @@
 # Piensa en NumPy como los cimientos de una casa. No los ves, pero
 # sin ellos, pandas y matplotlib se caerían.
 #
-# Para usarlo, SIEMPRE lo importamos con el alias 'np'. Es la ley.
+#todo  Para usarlo, SIEMPRE lo importamos con el alias 'np'. Es la ley.
 # ---
 
 # pip install numpy  # (Esto solo lo haces una vez en tu terminal)
@@ -58,7 +52,7 @@ for temp in temp_C:
     temp_F.append(9/5 * temp + 32)
     
 print(temp_F)
-
+#%%
 # ---
 # Funciona, pero es mucho código. Podemos usar una "list comprehension".
 # Es más "Pythonico", más elegante.
@@ -78,15 +72,17 @@ print("\n--- Conversión con 'map' y 'lambda' ---")
 temp_F = list(map(lambda x: 9/5 * x + 32, temp_C))
 print(temp_F)
 
-
+#%%
 # ==================================
-# %% La Ventaja Real: El Arreglo de NumPy
+#todo %% La Ventaja Real: El Arreglo de NumPy
 # ==================================
-# Ahora veamos cómo se hace con NumPy.
+#todo Ahora veamos cómo se hace con NumPy.
 # Primero, creamos un 'array' (arreglo) a partir de nuestra lista.
 # ---
+temp_C = [26.8, 29.4, 30.1, 29.5, 28.6, 29.9, 28.4]
 
 print("\n--- Creando nuestro primer Array ---")
+#todo IMPORTANTE CONVERTIR UNA LISTA EN ARRAY NUMPY
 array_C = np.array(temp_C)
 print(array_C)
 print(type(array_C))  # Fíjate, ya no es 'list', es 'ndarray'
@@ -99,19 +95,13 @@ print("\n--- Conversión con NumPy (¡Facilísimo!) ---")
 array_F = 9/5 * array_C + 32
 print(array_F)
 
-# ---
-# ¿Viste eso? ¡Es todo!
-# El código es simple, limpio y se lee EXACTAMENTE igual que la fórmula
-# matemática. No hay bucles, ni 'map', ni cosas raras.
-#
-# Esta es la PRIMERA gran ventaja: **El código es idéntico a la matemática.**
-#
-# La SEGUNDA gran ventaja es la VELOCIDAD.
+# La gran ventaja es la VELOCIDAD.
 # NumPy está escrito en C por debajo, así que es rapidísimo.
 # Vamos a probarlo con 1 millón de temperaturas.
 # ---
 
 print("\n--- Preparando prueba de velocidad (1 millón de datos) ---")
+#IMPORTAMOS LA FUNCION UNIFORM DE LA LIBRERIA RANDOM 
 from random import uniform
 
 # Generamos una lista ENORME de Python
@@ -123,8 +113,7 @@ print(f"Lista creada con {len(temp_C_grande)} elementos.")
 print("\n--- Prueba 1: Bucle 'for' (lento) ---")
 # %%time  
 # La línea de arriba (%%time) es un "comando mágico" de Jupyter.
-# No funciona en un script .py, por eso la comentamos.
-# Mide cuánto tarda en ejecutarse el código de abajo.
+# Mide cuánto tarda en ejecutarse el código de abajo./ SOLO FUNCIONA EN JUPYTER
 
 temp_F = []
 for temp in temp_C_grande:
@@ -133,38 +122,9 @@ print("Prueba 'for' terminada.")
 
 
 print("\n--- Prueba 2: 'map' (menos lento) ---")
-# %%time
-temp_F = list(map(lambda x: 9/5 * x + 32, temp_C_grande))
-print("Prueba 'map' terminada.")
 
 
-print("\n--- Prueba 3: List Comprehension (mejor) ---")
-# %%time
-temp_F = [9/5 * temp + 32 for temp in temp_C_grande]
-print("Prueba List Comprehension terminada.")
 
-# ---
-# Y ahora, la prueba con NumPy.
-# Ojo: la creación del array también toma tiempo, así que lo medimos.
-# ---
-
-print("\n--- Prueba 4: Creando el Array de NumPy ---")
-# %%time
-array_C_grande = np.array(temp_C_grande)
-print("Array de NumPy creado.")
-
-
-print("\n--- Prueba 5: Operación con NumPy (¡Rapidísimo!) ---")
-# %%time
-array_F = 9/5 * array_C_grande + 32
-print("Operación de NumPy terminada.")
-
-# ---
-# Si ejecutas esto en Jupyter, verás que NumPy es increíblemente
-# más rápido (¡órdenes de magnitud!) que cualquier método de Python puro.
-# ---
-
-# ==================================
 # %% Arreglos 1-D (Vectores)
 # ==================================
 # Empecemos por lo básico: arreglos de una dimensión (como una lista).
@@ -173,13 +133,14 @@ print("Operación de NumPy terminada.")
 
 print("\n--- Jugando con Arreglos 1D (Slicing) ---")
 A = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+#todofunciona practicamente como una lista, podemos llamar un elemento de cualquier posicion 
 print(f"Arreglo A: {A}")
 print(f"A[0]: {A[0]}")      # El primero
 print(f"A[-1]: {A[-1]}")     # El último
 print(f"A[::2]: {A[::2]}")   # De 2 en 2
 
 # ---
-# Ahora, ojo con esto. Asignar valores...
+#todo Ahora, ojo con esto. Asignar valores...
 # ---
 
 print("\n--- Asignación de valores y Tipos de Datos ---")
@@ -191,7 +152,7 @@ print(f"A (con A[0]=100): {A}")
 # Si intentas meter un decimal (float)...
 A[-1] = 10.5
 print(f"A (con A[-1]=10.5): {A}")
-# ¿Viste? ¡Lo redondeó a 10! NumPy no mezcló tipos.
+#todo  ¿Viste? ¡Lo redondeó a 10! NumPy no mezcló tipos.
 
 # Y si intentas meter un texto (string)...
 try:
@@ -205,9 +166,9 @@ except ValueError as e:
 
 # ---
 # ¿Por qué pasó eso?
-# A diferencia de las listas de Python, los arreglos de NumPy son
-# **homogéneos**: todos sus elementos DEBEN ser del mismo tipo.
-# (int32, float64, etc.).
+#TODO A diferencia de las listas de Python, los arreglos de NumPy son
+#TODO **homogéneos**: todos sus elementos DEBEN ser del mismo tipo.
+# (int32, float64, etc.). 
 #
 # Esto es CLAVE para que sean rápidos. Saben exactamente cuánta
 # memoria ocupa cada elemento y no tienen que andar preguntando.
@@ -216,12 +177,12 @@ except ValueError as e:
 # Vamos a ver las propiedades más importantes de un arreglo.
 # ---
 
-# print("\n--- ¿Qué tanto trae NumPy? (dir(np)) ---")
+#TODO print("\n--- ¿Qué tanto trae NumPy? (dir(np)) ---")
 # dir(np)  # Descomenta esto si quieres ver la lista GIGANTE de funciones
 
 # ---
-# Propiedades clave de un 'ndarray' (el objeto arreglo):
-#
+#TODO Propiedades clave de un 'ndarray' (el objeto arreglo):
+##TODO FUNCIONES IMPORTANTES
 # * array.size: ¿Cuántos elementos tiene en total?
 # * array.ndim: ¿Cuántas dimensiones tiene? (ej. 1D, 2D, 3D)
 # * array.shape: La "forma". (ej. una tupla (3, 4) -> 3 filas, 4 columnas)
@@ -230,7 +191,7 @@ except ValueError as e:
 # ---
 
 print("\n--- Propiedades de un Arreglo ---")
-# Vamos a forzar que el arreglo sea de tipo 'float32'
+# Vamos a forzar que el arreglo sea de tipo 'float32' / osea cada dato sera de tipo float y ocupara 32 bits
 A = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=np.float32)   # dtype=np.<tipo de datos numpy> : dtype=np.float64
 
 print(f"Arreglo A: {A}")
@@ -239,12 +200,12 @@ print(f"Dimensiones (A.ndim): {A.ndim}")
 print(f"Forma (A.shape): {A.shape}")               # (9,) -> una tupla con un solo valor
 print(f"Tipo de dato (A.dtype): {A.dtype}")
 print(f"Bytes por elemento (A.itemsize): {A.itemsize}")
-
+#%%
 # ---
-# ¡IDEA CENTRAL DE NUMPY!
+#todo ¡IDEA CENTRAL DE NUMPY!
 #
-# **Los métodos de NumPy SIEMPRE crean arreglos nuevos.**
-#
+#todo **Los métodos de NumPy SIEMPRE crean arreglos nuevos.**
+#todo
 # No modifican el original (casi nunca).
 #
 # Ejemplo:
@@ -255,7 +216,7 @@ print(f"Bytes por elemento (A.itemsize): {A.itemsize}")
 # ---
 
 print("\n--- La idea central: np.append ---")
-# Los metodos de numpy crean nuevos arreglos
+#todo Los metodos de numpy crean nuevos arreglos
 print(f"A original: {A}")
 A = np.append(A, 10)
 print(f"A después de append: {A}")
@@ -265,24 +226,26 @@ print(f"A después de append: {A}")
 # ---
 
 print("\n--- np.insert ---")
+#tododonde ve el 3, ahi le va a seguir el 0,0,0
 A = np.insert(A, 3, [0, 0, 0])
 print(f"A después de insert: {A}")
 
 
 print("\n--- np.delete ---")
+#todonos quita el ultimo elemento del array
 A = np.delete(A, -1)
 print(f"A después de delete: {A}")
-
+#%%
 # ==================================
-# %% Creación de Arreglos
+#todo %% Creación de Arreglos
 # ==================================
-# ¿Y si no tengo una lista? ¿Cómo creo arreglos de cero?
+#todo ¿Y si no tengo una lista? ¿Cómo creo arreglos de cero?
 #
-# Método 1: `np.arange` (como el `range` de Python, pero con esteroides)
+#todo Método 1: `np.arange` (como el `range` de Python, pero con esteroides)
 # ---
 
 print("\n--- Creando arreglos con np.arange ---")
-A = np.arange(10)   # Paso por defecto = 1 (del 0 al 9)
+A = np.arange(10)   # creamos un array que va del 0 al 9 (del 0 al 9)
 print(A)
 
 
@@ -291,10 +254,10 @@ print(A)
 
 
 # ¡A `arange` SÍ le gustan los pasos decimales! (a `range` no)
-A = np.arange(1, 5, 0.25)   # arange soporta valores de paso tipo float
+A = np.arange(1, 5, 0.25)   #todo arange soporta valores de paso tipo float
 print(A)
 
-# ---
+#%%
 # Esto es súper útil cuando sabes el "paso" o "intervalo" que quieres.
 # Ejemplo: Calcular la distancia de un carro cada 0.5 segundos.
 # ---
@@ -308,18 +271,18 @@ d = 0.5 * a * t**2
 
 print("   TIEMPO     DISTANCIA")
 print("   ------     ---------")
-# `zip` nos deja iterar sobre 't' y 'd' al mismo tiempo
+#TODO `zip` nos deja iterar sobre 't' y 'd' al mismo tiempo
 for val_t, val_d in zip(t, d):
     print("{:>6.2f} seg   {:>6.2f} m".format(val_t, val_d))
 
-# ---
-# Método 2: `np.linspace` (espacio lineal)
+#%%
+# Método 2: #TODO`np.linspace` (espacio lineal)
 #
 # Esto es diferente. Aquí no le dices el "paso", le dices:
-# "Dame [N] números exactos entre [inicio] y [fin]".
+#TODO "Dame [N] números exactos entre [inicio] y [fin]".
 #
 # Es perfecto cuando no te importa el paso, sino cuántos puntos quieres.
-# Por defecto, `linspace` divide el rango en 50 partes.
+#TODO Por defecto, `linspace` divide el rango en 50 partes.
 # ---
 
 print("\n--- Creando arreglos con np.linspace ---")
@@ -330,7 +293,7 @@ print(A)
 A = np.linspace(0, 100, 12)   # 12 valores exactos entre 0 y 100
 print(A)
 
-# ---
+#%%
 # Ejemplo: Queremos 6 mediciones de distancia, sin importar el intervalo.
 # ---
 
@@ -345,28 +308,23 @@ print("   ------     ---------")
 for val_t, val_d in zip(t, d):
     print("{:>6.2f} seg   {:>6.2f} m".format(val_t, val_d))
 
-# ---
-# Método 3: `np.logspace` (espacio logarítmico)
+#%%
+#TODO Método 3: `np.logspace` (espacio logarítmico)
 #
-# Igual que linspace, pero la escala es logarítmica (potencias de 10).
-# np.logspace(0, 2, 10) -> Dame 10 números entre 10^0 (1) y 10^2 (100).
+#TODO Igual que linspace, pero la escala es logarítmica (potencias de 10).
+#TODO np.logspace(0, 2, 10) -> Dame 10 números entre 10^0 (1) y 10^2 (100).
 # ---
 
 print("\n--- Creando arreglos con np.logspace ---")
 A = np.logspace(0, 2, 10)  # Espaciamiento logaritmico de 10^0 hasta 10^2 (10 elementos)
 print(A)
 
-# ---
-# ¡Uf! Hora de un café. Tómate un respiro.
-# Lo que sigue son más dimensiones.
-# ---
 
-
+#%% ==================================
+#todo  Arreglos n-dimensionales (Matrices)
 # ==================================
-# %% Arreglos n-dimensionales (Matrices)
-# ==================================
-# Ahora, el verdadero poder: arreglos de 2 dimensiones (tablas/matrices).
-# Los creamos con una "lista de listas".
+#todo Ahora, el verdadero poder: arreglos de 2 dimensiones (tablas/matrices).
+#todo Los creamos con una "lista de listas".
 # ---
 
 print("\n--- Arreglos 2D (Matrices) ---")
@@ -410,14 +368,14 @@ print("Rango:", A.shape)            # (3, 1, 4)
 print("Tipo de dato", A.dtype)
 print("Bytes de memoria por elemento:", A.itemsize)
 
-
+#%%
 # ==================================
-# %% Creación de Arreglos n-D: `reshape`
+#todo %% Creación de Arreglos n-D: `reshape`
 # ==================================
 # Es un dolor de cabeza crear matrices con listas de listas.
-#
-# El truco es usar `arange` (para crear 1D) y luego `reshape`
-# (para "darle forma").
+#todo
+#todo El truco es usar `arange` (para crear 1D) y luego `reshape`
+#todo (para "darle forma").
 # ---
 
 print("\n--- Creando matrices con `arange` y `reshape` ---")
@@ -444,7 +402,7 @@ print(A)
 # Si colapsas las filas (axis=0), te queda un resultado por columna.
 # Si colapsas las columnas (axis=1), te queda un resultado por fila.
 #
-# Veamos `insert`.
+#todo Veamos `insert`.
 # ---
 
 print("\n--- Jugando con `axis` (ejes) ---")
@@ -452,6 +410,7 @@ A = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 print(A, '\n')
 
 # axis=0 -> Inserta como una nueva FILA en la pos 1
+#todo en la fila siguiente al numero 1 
 A = np.insert(A, 1, [100, 200, 300, 400], axis=0)
 print(A, '\n')
 
@@ -459,12 +418,12 @@ print(A, '\n')
 A = np.insert(A, 2, [0, 0, 0, 0], axis=1)
 print(A, '\n')
 
-# axis=0 -> Borra la FILA en la pos 1
+#todo axis=0 -> Borra la FILA en la pos 1
 A = np.delete(A, 1, axis=0)
 print(A, '\n')
 
-# ---
-# Lo mismo pasa con `concatenate` (pegar matrices).
+#%%
+#TODO Lo mismo pasa con `concatenate` (pegar matrices).
 # ¿Las pegas una encima de la otra (axis=0) o una al lado de la otra (axis=1)?
 # ---
 
@@ -472,20 +431,20 @@ print("\n--- Concatenar matrices (pegar) ---")
 A = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 print(A, '\n')
 
-# Apila A sobre sí misma (crece verticalmente)
+#TODO Apila A sobre sí misma (crece verticalmente)
 A = np.concatenate([A, A], axis=0)
 print(A, '\n')
 
-# Apila A (que ya es doble) al lado de sí misma (crece horizontalmente)
+#TODO Apila A (que ya es doble) al lado de sí misma (crece horizontalmente)
 A = np.concatenate([A, A], axis=1)
 print(A, '\n')
 
-# ---
+#%%
 # El `axis` también es CLAVE para las operaciones matemáticas
 # como `sum`, `mean` (promedio), `max`, etc.
 #
 # Regla fácil (la del "colapso"):
-# `np.sum(A, axis=0)` -> Suma "hacia abajo" (colapsa filas). Devuelve la suma DE CADA COLUMNA.
+# `np.sum(A, axis=0)` -> Suma "hacia abajo" (colapsa filas). Devuelve la su ma DE CADA COLUMNA.
 # `np.sum(A, axis=1)` -> Suma "hacia los lados" (colapsa columnas). Devuelve la suma DE CADA FILA.
 # `np.sum(A)` (sin axis) -> Suma TODO. Devuelve un solo número.
 # ---
@@ -508,8 +467,8 @@ print(f"Suma en axis=1 (suma de filas): {np.sum(A, axis=1)}\n")
 # ---
 # Sí, es confuso. Pero la regla de "colapsar" ayuda.
 #
-# Aquí hay un montón de funciones matemáticas útiles de NumPy.
-# Fíjate que casi todas son `np.funcion(arreglo)`.
+#TODO Aquí hay un montón de funciones matemáticas útiles de NumPy.
+#TODO Fíjate que casi todas son `np.funcion(arreglo)`.
 # ---
 
 print("\n--- Métodos matemáticos útiles (1D) ---")
@@ -533,11 +492,11 @@ print(f"np.log(A): {np.log(A)}\n")    # Logaritmo natural de cada elemento
 print(f"np.pi: {np.pi}")
 
 
-# ==================================
-# %% Números Aleatorios con NumPy
+#%%
+#TODO Números Aleatorios con NumPy
 # ==================================
 # ¿Recuerdas lo que tardó crear la lista de 1 millón?
-# El módulo `np.random` es súper rápido y crea arreglos
+#TODO El módulo `np.random` es súper rápido y crea arreglos
 # aleatorios directamente.
 # ---
 
@@ -553,7 +512,7 @@ print(f"np.random.random((5,)): \n{A}\n")
 A = np.random.random((5, 4))
 print(f"np.random.random((5, 4)): \n{A}\n")
 
-# Una matriz de 2x4 aleatoria (int) entre 1 y 9 (10 no incluido)
+#todo Una matriz de 2x4 aleatoria (int) entre 1 y 9 (10 no incluido)
 A = np.random.randint(1, 10, (2, 4))     # randrange -> randint
 print(f"np.random.randint(1, 10, (2, 4)): \n{A}\n")
 
@@ -562,13 +521,13 @@ A = np.random.uniform(1, 5, (3, 5))
 print(f"np.random.uniform(1, 5, (3, 5)): \n{A}\n")
 
 
+# %% 
+#TODO Indexación Booleana (¡El Súper-Poder de NumPy!)
 # ==================================
-# %% Indexación Booleana (¡El Súper-Poder de NumPy!)
-# ==================================
-# Esta es, quizás, la herramienta más poderosa para análisis de datos.
+#TODO Esta es, quizás, la herramienta más poderosa para análisis de datos.
 #
 # En lugar de pedir `A[5]` (el índice 5),
-# puedes pedir `A[A > 5]` (¡dame todos los elementos de A que sean > 5!)
+#TODO puedes pedir `A[A > 5]` (¡dame todos los elementos de A que sean > 5!)
 #
 # ¿Cómo funciona?
 # 1. Creas una condición (ej. A % 2 == 0)
@@ -583,12 +542,12 @@ print(f"Arreglo A: {A}")
 print(f"Máscara (A % 2 == 0): {mascara_pares}")
 
 # ---
-# 3. Usas esa "máscara" como si fuera un índice.
+# 3.-#todo Usas esa "máscara" como si fuera un índice.
 # NumPy te devolverá SÓLO los elementos donde la máscara era `True`.
 # ---
 
 print("\n--- Aplicando la Máscara (Filtrando) ---")
-# "De A, dame solo los elementos donde la máscara es True"
+#todo "De A, dame solo los elementos donde la máscara es True"
 A_pares = A[mascara_pares]
 # O, más directo:
 # A_pares = A[A % 2 == 0]
@@ -620,9 +579,9 @@ mascara_rango = (temp_Ene >= 28) & (temp_Ene <= 29)
 print(temp_Ene[mascara_rango], '\n')    #, &, |, !=
 
 # ---
-# ¿Y si no quiero los VALORES, sino los ÍNDICES (posiciones)?
+#todo ¿Y si no quiero los VALORES, sino los ÍNDICES (posiciones)?
 #
-# Para eso usamos `np.where(condicion)`.
+#todo Para eso usamos `np.where(condicion)`.
 # "Dime DÓNDE (where) se cumple esta condición".
 # ---
 
@@ -697,8 +656,8 @@ print(f"Coeficiente medio: {np.mean(mu)}")
 # ---
 
 
-# ==================================
-# %% BONUS TRACK: El objeto `np.matrix`
+#%%
+#todo  %% BONUS TRACK: El objeto `np.matrix`
 # ==================================
 #
 # NumPy tiene un objeto especial `matrix` (además de `array`).
