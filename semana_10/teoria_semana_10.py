@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+   #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+#todo ver la linea 212 y entiendes todo 
 # %%
 # ============================================================================= 
 # Programación Orientada a Objetos - Parte 2 OFICIAL 

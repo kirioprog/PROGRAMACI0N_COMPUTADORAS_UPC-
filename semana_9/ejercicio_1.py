@@ -7,7 +7,7 @@ class Rectangulo:
     def __repr__(self):
         return (f"La base del triangulo es {self.base}  y  su altura es {self.altura} ")
 
-    
+    #ESTAS SON FUNCIONES QUE PERTENDENCEN A LA CLASE LA PODEMOS LLAMAR SI QUEREMOS QUE RETORNE LO QUE CONTIENE 
     def perimetro(self):
         return self.base + 2*self.altura
             

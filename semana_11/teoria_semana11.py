@@ -328,6 +328,7 @@ print(A)
 # ---
 
 print("\n--- Arreglos 2D (Matrices) ---")
+#2 dimensiones, 2 llaves 
 A = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 print(A)
 
@@ -358,6 +359,7 @@ print(f"A[[0, 2], [1]]: {A[[0, 2], [1]]}") # [2 10] (Esto es "indexing" avanzado
 # ---
 
 print("\n--- Arreglos 3D (Cubos) ---")
+#3 dimensiones 3 llaves 
 A = np.array([[[1, 2, 3, 4]], [[5, 6, 7, 8]], [[9, 10, 11, 12]]])
 print(A)
 
@@ -521,7 +523,7 @@ A = np.random.uniform(1, 5, (3, 5))
 print(f"np.random.uniform(1, 5, (3, 5)): \n{A}\n")
 
 
-# %% 
+ # %% 
 #TODO Indexación Booleana (¡El Súper-Poder de NumPy!)
 # ==================================
 #TODO Esta es, quizás, la herramienta más poderosa para análisis de datos.
@@ -551,7 +553,7 @@ print("\n--- Aplicando la Máscara (Filtrando) ---")
 A_pares = A[mascara_pares]
 # O, más directo:
 # A_pares = A[A % 2 == 0]
-print(f"A[A % 2 == 0]: {A_pares}")
+print(f"A[A % 2 == 0]: {A_pares}") # CREO QUE ES EL MAS CLARO, SOLO SE IMPRIMEN LOS QUE SON MULTIPLOS DE 2
 
 # ---
 # ¡Esto es brutalmente útil!

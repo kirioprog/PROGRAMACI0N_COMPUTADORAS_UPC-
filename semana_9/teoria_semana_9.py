@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-# OOP - PARTE 1 
+#TODO CON EL EJEMPLO DE LA LINEA 285 QUEDA TODO CLARO 
+#TODO  OOP - PARTE 1 
 # en un objeto juntas datos (atributos) y funciones (métodos) que operan sobre esos datos
 # eso es OOP, programación orientada a objetos
 
@@ -258,12 +259,15 @@ print(persona1)
 
 
 class Persona:
+    #ACA DEFINIMOS NUESTAS VARAIBLES POR ASI DECIRLO SON PARAMETROS O CARACTERISTICAS ALGO ASI 
     def __init__(self):
         self._nombre = ''
     
+    #ESTO ES LO QUE TE VA A RETORNAR CADA VEZ QUE LA LLAMAMOS 
     def __repr__(self):
         return "Persona:[nombre:'{}']".format(self._nombre)
     
+    #SET SE UTILIZA CUQANDO QUEREMOS VERIFICAR UN VALOR Y DAR UN TIPO DE RROR 
     def set_nombre(self, val):
         if isinstance(val, str):
             self._nombre = val
@@ -283,18 +287,21 @@ persona1.get_nombre()
 print(persona1)
 
 #%%
-# DEFINA COMPLETAMENTE LA CLASE PERSONA CON TODOS LOS ATRIBUTOS NECESARIOS
-# Y LOS SETTERS Y GETTERS CORRESPONDIENTES
+#todo DEFINA COMPLETAMENTE LA CLASE PERSONA CON TODOS LOS ATRIBUTOS NECESARIOS
+#todo Y LOS SETTERS Y GETTERS CORRESPONDIENTES
 class Persona:
+    #DEFINIMOS NUETRAS VARIABLES O CARACTERIRICAS 
     def __init__(self):
         self._nombre = ''
         self._telefono = ''
         self._email = ''
     
     def __repr__(self):
+        #ES LO QUE VA A RETORNAR CUANDO LLAMEMEOS A PERSONA 
         return "Persona:[nombre:'{}', telefono:{}, email:{}]".format(
             self._nombre, self._telefono, self._email)
     
+    #SET VERIFICA EL DATO Y TE PUEDE BRIDNAR UN ERROR Y ESTE ES INCORRECTO 
     def set_nombre(self, val):
         #all devuelve true si todos los elementos de la lista son verdaderos 
         # Validamos que el nombre contenga caracteres y espacios en blanco
@@ -302,7 +309,8 @@ class Persona:
             self._nombre = val
         else:
             raise TypeError("El atributo 'nombre' debe de ser un objeto 'str'")
-            
+    
+    #SE PONE SOLO PARA PROTEGER EL ATRIBUTO, OLO LO TIENES QUE RETORNAR Y LISTO 
     def get_nombre(self):
         return self._nombre
     

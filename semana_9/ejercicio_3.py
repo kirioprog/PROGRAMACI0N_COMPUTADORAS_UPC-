@@ -17,14 +17,12 @@ class Alumno(object):
         #creamos esta lista para no tener que escribirla a cada rato 
         self.notas = [n1, n2, n3, n4, n5]
 
-    
+    #CREAMOS LA FUNCION PROMEDIO QUE EN TEORIA NOS DEVUELE EL PROMEDIO 
     def promedio(self):
         
         prom = sum(self.notas) / 5
         return prom
 
-            
-            
             
     def estaAprobado(self):
         aprobado = 0
@@ -37,7 +35,7 @@ class Alumno(object):
         else:
             return False
         
-
+    #ES LO QUE VA A ARROJAR CUANDO LLAMEMOS A PERSONA 
     def __repr__(self):
         return f"Alumno[nombre={self.nombre}, apellido={self.apellido}, codigo={self.codigo}, modalidad={self.modalidad}, num_cur={self.num_cur}, n1={self.n1}, n2={self.n2}, n3={self.n3}, n4={self.n4}, n5={self.n5}]"
 
@@ -50,14 +48,6 @@ a3 = Alumno("Kim", "Wong", 201605010, "TercioSup", 5, 13, 14, 12, 14, 13)
 a4 = Alumno("Juan", "Perez", 201502160, "Nivelacion", 3, 10, 11, 13)
 a5 = Alumno("Sandra", "Arana", 201616020, "Beca", 4, 12, 15, 14, 13)
 
-#print("Objetos creados")
-#print("---------------")
-#print(a1, "\n")
-#print(a2, "\n")
-#print(a3, "\n")
-#print(a4, "\n")
-#print(a5, "\n")
-#print()
 
 lista_alumnos = [a1, a2, a3, a4, a5]
 

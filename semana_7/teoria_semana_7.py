@@ -49,7 +49,8 @@ print(os.getcwd())
 print(os.listdir())
 
 #%%
-#todo ARCHIVOS TXT
+
+#todo ARCHIVOS TXT ¡ AQUI INICIA LO INTERESANTE ! 
 #todo ACA EMPIEZA LO INTERESANTE 
 
 #todo MODOS DE LECTURA Y DEMAS 
@@ -72,6 +73,7 @@ meses: list[str] = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'set
 #ESTOS METODOS SON LENTOS, MAS ABAJO VES UN METODO QUE TE LO HACE TODO ESTO MAS RAPIDO 
 
 #todo Se abre el archivo de texto en modo escritura (si no existe se crea un archivo nuevo)
+#todo mas abajo hay un metodo mas eficaz con with 
 
 #PARA ABRIR EL ARCHIVO UTILIZAN OPEN(nombre de archivo, mode, intepretacion)
 file = open("meses.txt", mode='w', encoding='utf-8')
@@ -215,7 +217,7 @@ with open(filename, mode='w', newline='') as csv_file:
     #delimiter=';' establece el separador (compatible con Excel)
     writer = csv.writer(csv_file, delimiter=';')
     
-    #writer.writerow() escribe una lista como una fila
+    # todo writer.writerow() escribe una lista como una fila
     #escribimos la primera fila (el encabezado)
     writer.writerow(["HORA", "EMPLEADO"])
     

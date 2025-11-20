@@ -3,22 +3,20 @@
 # ##################################################
 # ##          Matplotlib: ¡A Graficar!            ##
 # ##################################################
-#
-# Autor: Luis A. Muñoz - 2024
-# (Archivo original: Semana_12 - Matplotlib.ipynb)
+
 #
 # ¡Bienvenido a Matplotlib! Esta es la librería "clásica" y más
 # famosa de Python para crear gráficos. Es la navaja suiza
 # para visualizar tus datos, ya sea que vengan de listas
 # o, más comúnmente, de arrays de NumPy.
 #
-# Suena complicado, pero la idea es simple: tienes datos, quieres un dibujo.
+# Suena complicado, pero la idea es simple:#TODO tienes datos, quieres un dibujo.
 #
 # Tiene una parte llamada 'pylab' que se diseñó para que la gente
 # que venía de MATLAB se sintiera como en casa. Nosotros usaremos
 # 'pyplot', que es la forma moderna de hacerlo.
 #
-# ### Resumen de Comandos Clave (tu "chuleta" o "cheat sheet"):
+# ###TODO Resumen de Comandos Clave (tu "chuleta" o "cheat sheet"):
 #
 #     plt.plot(data_x, data_y, ...)  # Dibuja el gráfico principal (líneas, puntos).
 #     plt.title(str)                # Pone un título general al gráfico.
@@ -34,25 +32,13 @@
 
 # %%
 # ##################################################
-# ##                Configuración Inicial         ##
+# ##TODO                Configuración Inicial         ##
 # ##################################################
 #
-# Para usar Matplotlib, no importamos *todo* el paquete.
+#TODO Para usar Matplotlib, no importamos *todo* el paquete.
 # Generalmente, solo necesitamos la parte de `pyplot`.
-#
-# Por convención (¡todo el mundo lo hace así!), lo importamos
-# con el alias `plt`. Así, en lugar de escribir `matplotlib.pyplot.plot()`,
-# solo escribimos `plt.plot()`. Más fácil, ¿no?
 
-# La línea mágica `%matplotlib inline` era necesaria en versiones
-# viejas de Jupyter para que los gráficos aparecieran *dentro*
-# del notebook y no en una ventana nueva.
-#
-# Hoy en día, en Jupyter, VS Code, etc., esto suele ser el
-# comportamiento por defecto. En un script .py puro, esta línea
-# no tiene efecto, pero es bueno saber qué hacía.
-# %matplotlib inline
-
+#EN JUPYTER LO PONE %matplotlib inline
 import matplotlib.pyplot as plt
 import numpy as np  # Matplotlib y NumPy son mejores amigos, importémoslo ya.
 
@@ -63,7 +49,7 @@ import numpy as np  # Matplotlib y NumPy son mejores amigos, importémoslo ya.
 #
 # `plot` es el caballo de batalla de Matplotlib.
 #
-# Si le das *una sola lista* de números, `plot` es listo:
+#TODO Si le das *una sola lista* de números, `plot` es listo:
 # asume que esos son los valores del eje Y (la altura).
 # ¿Y el eje X? Simplemente usa los índices de la lista (0, 1, 2, 3...).
 
@@ -72,14 +58,14 @@ import numpy as np  # Matplotlib y NumPy son mejores amigos, importémoslo ya.
 #          Y = [5, 10, 6, 14, 12, 8]
 plt.plot([5, 10, 6, 14, 12, 8])
 
-# --- Un buen gráfico necesita contexto ---
-# Un gráfico sin etiquetas es un dibujo inútil.
+#todo  --- HCAR UN GRAFICO CON TODAS SUS VARIABLES  ---
+#todo Un gráfico sin etiquetas es un dibujo inútil.
 plt.title("Ventas anuales de Odontologia Pesquera")  # Título
 plt.xlabel("Años (implícitos, desde el 0)")         # Etiqueta X
 plt.ylabel("Ventas [millones]")                      # Etiqueta Y
 plt.grid()  # (Opcional) Ponemos una cuadrícula, ¡ayuda mucho!
 
-# ¡El comando final para mostrar la ventana del gráfico!
+#todo ¡El comando final para mostrar la ventana del gráfico!
 # En un script .py, esto es OBLIGATORIO para que el gráfico aparezca.
 # En Jupyter a veces no es necesario, pero es buena práctica ponerlo.
 plt.show()
@@ -104,18 +90,20 @@ plt.plot([5, 10, 6, 14, 12, 8],
 plt.title("Ventas anuales de Odontologia Pesquera")
 plt.xlabel("Años")
 plt.ylabel("Ventas [millones]")
+#todo recuerda que plt.drig es para poner cuadriculas  y show para mostrar la grafica
 plt.grid()
 plt.show()
 
 # %%
-# --- Personalizando el Gráfico (Estilo MATLAB) ---
+#TODO --- Personalizando el Gráfico (Estilo MATLAB) --- PUEDE REDUCIR TODO EL TRABAJO PERO ES UN DISEÑÑO PREDETERMINADO
 #
 # Escribir todo eso es un poco largo.
 # Hay un "atajo" estilo MATLAB: una cadena de texto corta que
 # combina [color][marcador][línea].
 # Es más rápido de escribir, pero menos legible.
 
-# Personalizar un grafico con el atajo
+#diseño predeterminado color mangenta
+#TODO Personalizar un grafico con el atajo
 # '-ms' significa:
 #   - : línea sólida
 #   m : color magenta
@@ -129,8 +117,8 @@ plt.grid()
 plt.show()
 
 # %%
-# --- Dando valores a X e Y ---
-#
+#TODO --- Dando valores a X e Y ---
+#todo
 # ¿Qué pasa si le damos *dos* listas a `plot`?
 # `plot(lista_x, lista_y)`
 #
@@ -138,10 +126,11 @@ plt.show()
 # (x[0], y[0]), (x[1], y[1]), (x[2], y[2]), ...
 
 # Graficar con datos explícitos para X e Y
+#los datos tienen una distancia homognea porque los caudritos y eso son todos del mismo tamaño
 anios = [2014, 2015, 2016, 2017, 2018, 2019]
 ventas = [5, 10, 6, 14, 12, 8]
-
-# '-bo' significa:
+#TODO OTRO DISÑEO PREDETERMIANDO -BO
+#TODO '-bo' significa:
 #   - : línea sólida (se puede omitir si pones marcador)
 #   b : color azul (blue)
 #   o : marcador circular
@@ -150,8 +139,8 @@ plt.plot(anios, ventas, '-bo')
 plt.title("Ventas anuales de Odontologia Pesquera")
 plt.xlabel("Años")
 plt.ylabel("Ventas [millones]")
-plt.grid()
-plt.show()
+plt.grid()    #para poner cuadritos
+plt.show()    #para crear la grafica 
 
 # %%
 # ##################################################
@@ -159,7 +148,7 @@ plt.show()
 # ##################################################
 #
 # Aquí es donde Matplotlib brilla junto a NumPy.
-# Vamos a graficar una onda senoidal:
+#todo Vamos a graficar una onda senoidal:
 #
 #   y = A * sin(2 * pi * f * t)
 #
@@ -173,8 +162,8 @@ plt.show()
 
 A, f = 1, 1  # Amplitud = 1, Frecuencia = 1 Hz
 
-# Creamos 50 puntos (por defecto) entre 0 y 1 segundo
-# 50 puntos es poco, pero para 1Hz es suficiente.
+#todo Creamos 50 puntos (por defecto) entre 0 y 1 segundo
+#todo 50 puntos es poco, pero para 1Hz es suficiente.
 t = np.linspace(0, 1)
 y = A * np.sin(2 * np.pi * f * t)
 
@@ -200,8 +189,8 @@ plt.show()
 # de un auto de carreras con una cámara que tarda 1 segundo por foto.
 # No vas a capturar el movimiento real. Verás un manchón borroso.
 #
-# **Solución:** Necesitamos *más muestras* (más puntos en `t`)
-# si la señal es *más rápida* (mayor frecuencia).
+#todo **Solución:** Necesitamos *más muestras* (más puntos en `t`)
+#todo si la señal es *más rápida* (mayor frecuencia).
 #
 # Vamos a ajustar el código para que siempre haya 50 puntos *por ciclo*.
 
@@ -226,10 +215,10 @@ plt.show()
 
 # %%
 # ##################################################
-# ##      Varias Gráficas en una Sola Figura      ##
+# ##todo      Varias Gráficas en una Sola Figura      ##
 # ##################################################
 #
-# ¿Y si quiero comparar dos gráficos? Puedes "superponerlos".
+#todo ¿Y si quiero comparar dos gráficos? Puedes "superponerlos".
 #
 # --- Método 1: Todo en una llamada a `plot` ---
 # Le pasas más pares (x, y, formato) a `plot`:
@@ -240,14 +229,15 @@ t = np.linspace(0, 1, 50 * f)
 y1 = A * np.sin(2 * np.pi * f * t)
 y2 = A / 3 * np.cos(2 * np.pi * 2 * f * t)  # Otra señal (doble frec, 1/3 amp)
 
-# Pasamos (t, y1) y luego (t, y2) en una sola llamada
+#TODO mostRAR 2 GRAFICAS EN UNA SOLA
+#TODO Pasamos (t, y1) y luego (t, y2) en una sola llamada
 plt.plot(t, y1, t, y2)
 
 plt.title("Señales trigonometricas")
 plt.xlabel("Tiempo [seg]")
 plt.ylabel("Amplitud")
 
-# ¡IMPORTANTE! Si tienes más de un gráfico, necesitas una leyenda
+#TODO COLOCAR LEYENDA ¡IMPORTANTE! Si tienes más de un gráfico, necesitas una leyenda
 # para que la gente sepa qué es qué.
 plt.legend(['seno', 'coseno'])
 
@@ -255,9 +245,8 @@ plt.grid()
 plt.show()
 
 # %%
-# --- Método 2: Múltiples llamadas a `plot` ---
-#
-# Esta forma es (en mi opinión) más ordenada.
+#TODO PONER 2 GRAFICOS EN UNO SOLO, MEOTODO ORDENADO  --- Método 2: Múltiples llamadas a `plot` ---
+#TODO Esta forma es (en mi opinión) más ordenada.
 # Puedes llamar a `plt.plot` varias veces.
 #
 # Matplotlib "acumula" los gráficos en la misma figura
@@ -287,30 +276,26 @@ plt.show()
 
 # %%
 # ##################################################
-# ##                Sub-Gráficas (Subplots)       ##
+# #TODO PONER VARIAS GRAFICAS EN UNA SOLA IMAGEN#    Sub-Gráficas (Subplots)       ##
 # ##################################################
-#
-# A veces no quieres superponer los gráficos, sino ponerlos
-# uno al lado del otro, o uno encima del otro, en una "parrilla".
-#
-# Para esto, usamos `plt.subplot()`.
+#TODO Para esto, usamos `plt.subplot()`.
 #
 # Funciona con un código de 3 números: (filas, columnas, índice)
 #
-#   `plt.subplot(211)` significa:
+#TODO   `plt.subplot(211)` significa:
 #     - 2 filas
 #     - 1 columna
 #     - 1: activa el *primer* gráfico (el de arriba).
 #
-#   `plt.subplot(212)` significa:
+#TODO   `plt.subplot(212)` significa:
 #     - 2 filas
 #     - 1 columna
 #     - 2: activa el *segundo* gráfico (el de abajo).
 #
-# Después de llamar a `subplot`, todos los comandos (plot, title, etc.)
+#TODO Después de llamar a `subplot`, todos los comandos (plot, title, etc.)
 # se aplican SOLO a ese "eje" activo.
 #
-# **Pro-Tip:** Usa `plt.tight_layout()` antes de `plt.show()`
+#TODO **Pro-Tip:** Usa `plt.tight_layout()` antes de `plt.show()`
 # para que los títulos y etiquetas no se choquen entre sí.
 
 
@@ -323,10 +308,13 @@ y2 = A * np.cos(2 * np.pi * 2 * f * t) * np.exp(-2.6 * t)
 y3 = 2 * np.pi * np.exp(-t) * np.sin(2 * np.pi * t) - np.exp(t) * np.cos(2 * np.pi * t)
 y4 = np.sin(t) * np.cos(1 / (t + 0.1))
 
+
 # Especificamos el tamaño de la Figura (lienzo) total
 # (ancho, alto) en pulgadas
+#TODO     plt.figure(figsize=(ancho, alto)) # Define el tamaño del "lienzo" (la figura).
 fig = plt.figure(figsize=(6, 8))
 
+#OBSERVA QUE LOS 2 VALORES PRINCIPALES SE MANTEITNEEN IGUALES, SOLO CAMBIA EL TERCERO
 # ---- Gráfico 1 (4 filas, 1 columna, pos 1) ----
 plt.subplot(411)
 plt.plot(t, y1)
@@ -348,6 +336,7 @@ plt.plot(t, y4)
 plt.title("Funcion 4")
 
 # Ajusta automáticamente el espaciado para evitar superposiciones
+#TODO EVITAMOS QQUE LOS TITULOS CHOQUEN
 plt.tight_layout()
 plt.show()
 
@@ -375,8 +364,8 @@ plt.tight_layout()
 plt.show()
 
 # %%
-# --- Ejemplo 2x2 (2 filas, 2 columnas) ---
-
+#TODO --- Ejemplo 2x2 (2 filas, 2 columnas) ---
+#TODO  OBSERVA BIEN EL 2 X 2
 A, f = 1, 5
 t = np.linspace(0, 1, 50 * f)
 y1 = A * np.sin(2 * np.pi * f * t)
@@ -433,8 +422,8 @@ plt.subplot(222)
 plt.plot(t, y2)
 plt.title("Funcion 2")
 
-# --- Fila Inferior (que ocupa todo el ancho) ---
-# 2 filas, 1 columna, pos 2
+#TODO --- Fila Inferior (que ocupa todo el ancho) ---
+#TODO  2 filas, 1 columna, pos 2
 # (Piensa que la figura se divide en 2 filas (21x). La fila 1
 # la dividimos en 2 (221, 222). La fila 2 la dejamos entera (212)).
 plt.subplot(212)
@@ -453,8 +442,8 @@ plt.show()
 # Matplotlib no solo vive de `plot`. Aquí un vistazo rápido
 # a otros tipos de gráficos muy comunes.
 
-# --- Gráfico con ejes logarítmicos ---
-# Muy útil cuando tus datos cubren varios órdenes de magnitud
+#TODO --- Gráfico con ejes logarítmicos ---
+#TODO Muy útil cuando tus datos cubren varios órdenes de magnitud
 # (ej: de 1 a 10,000,000). Comprime los números grandes.
 
 x = np.linspace(0.1, 60, 1000)
@@ -468,6 +457,8 @@ plt.plot(x, y)
 plt.grid()
 plt.title("Lineal-Lineal")
 
+#TODO
+#TODO OBSERVA LOS PLT.SEMILOGX , SEMILOGY ENTRE OTROS, ESTAMOS CREANDO UN GRAFICO LOGARITMICO
 # Eje X logarítmico
 plt.subplot(2, 2, 2)
 plt.semilogx(x, y)
@@ -490,14 +481,17 @@ plt.tight_layout()
 plt.show()
 
 # %%
-# --- Grafico de barras (`plt.bar`) ---
-# Perfecto para categorías.
+#TODO Grafico de barras (`plt.bar`) ---
+#TODO Perfecto para categorías.
 
 ventas = np.array([10, 15, 16, 23, 18, 12, 19, 12, 17, 20, 19, 24])
 mes = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
        'Jul', 'Ago', 'Set', 'Oct', 'Nov', 'Dic']
 
+#10 pulgadas ancho y 5 de alto
 plt.figure(figsize=(10, 5)) # Hacemos la figura más ancha
+
+#plt.bar para crear un grafico de barrar (x,y)
 plt.bar(mes, ventas)
 # También existe horizontal: plt.barh(mes, ventas)
 
@@ -505,25 +499,26 @@ plt.title("Ventas anuales")
 plt.xlabel("Meses")
 plt.ylabel("Ventas [millones]")
 
-# Rota las etiquetas del eje X para que no se amontonen
+#TODO Rota las etiquetas del eje X para que no se amontonen, LAS PALABRAS ENERO, FEBRERO ETC
+#TODO PUEDES VER EN EL GRAFICO QUE ESTAN INCLINADAS 45 GRADOS
 plt.xticks(rotation=45)
 
 plt.show()
 
 # %%
-# --- Graficos polares (`plt.polar`) ---
-# En vez de (x, y), usamos (ángulo, radio).
+#TODO --- Graficos polares (`plt.polar`) ---
+#TODO  En vez de (x, y), usamos (ángulo, radio).
 # Ideal para cosas que dependen de una dirección.
 
 ang = np.linspace(0, 2 * np.pi, 200)  # 0 a 360 grados
 rad = 3 * np.cos(0.5 * ang)**2 + np.sin(4 * ang)
-
+#TODO CREAMOS EL GRAFICO POLAR
 plt.polar(ang, rad)
 plt.show()
 
 # %%
-# --- Grafico de torta (`plt.pie`) ---
-# Útil para mostrar proporciones (porcentajes).
+#TODO  --- Grafico de torta (`plt.pie`) ---
+#TODO Útil para mostrar proporciones (porcentajes).
 
 notas = [11, 7, 8, 7, 15, 18, 3, 11, 12]
 
@@ -536,7 +531,7 @@ dist_notas = [mal, regular, bien]
 
 # 2. Configuramos el gráfico
 colors = ['red', 'yellow', 'green']
-# "Explode" saca una porción de la torta
+# "Explode" saca una porción de la torta, en este caso la de color rojo esta un poco salida de la grafica
 explode = [0.1, 0, 0]  # Saca la primera porción (roja) 10%
 
 # 3. Graficamos
@@ -545,14 +540,16 @@ plt.pie(dist_notas, autopct="%1.1f%%", colors=colors,
         explode=explode, shadow=True)
 
 plt.title("Distribucion de notas de la PC")
-plt.legend(["Mal (0 - 8)", "Regular (9 - 12)", "Bien (13 - 20)"], loc='lower left')
+plt.legend(["Mal (0 - 8)", "Regular (9 - 12)", "Bien (13 - 20)"],
+           #con loc = 'lower left'colocamos la leyenda abajo a la izquierda
+           loc='lower left')
 plt.show()
 
 
 # %%
 # ##################################################
-# ##      Ejemplo de Aplicación: POO + Matplotlib ##
-# ##################################################
+# #todo      Ejemplo de Aplicación: POO + Matplotlib ##
+# todo##################################################
 #
 # Vamos a usar Matplotlib para *visualizar* un objeto
 # que creemos con Programación Orientada a Objetos.
@@ -694,7 +691,7 @@ plt.show()
 
 # %%
 # ##################################################
-# ##      ipywidgets: Interactividad (SOLO JUPYTER) ##
+# ##todo     ipywidgets: Interactividad (SOLO JUPYTER) ##
 # ##################################################
 #
 # AVISO IMPORTANTE:

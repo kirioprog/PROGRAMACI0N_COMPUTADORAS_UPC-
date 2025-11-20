@@ -3,6 +3,7 @@ class Capacitor:
     # Inicializacion
     def __init__(self, valor = 0):
         self.valor = valor
+        
     #importante el getter o property
     @property
     def valor(self):
