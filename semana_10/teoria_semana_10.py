@@ -223,6 +223,7 @@ class Circulo:
     1. Su radio (qué tan grande es).
     2. Su origen (dónde está su centro en un plano 2D, como (x, y)).
     """
+    #DECLARAMOS NUESTAS CARACTERISTICAS 
     def __init__(self, radio=1, origen=(0, 0)):
         """
         El constructor.
@@ -240,7 +241,8 @@ class Circulo:
         """Calcula y devuelve el perímetro (2 * PI * radio)"""
         return 2 * 3.1415 * self.radio
     
-    # --- GETTER para Radio ---
+    #TODO --- GETTER para Radio ---
+    #TODO NOS SIRVE SOLO PARA ASEGURAR EL DATO U VALOR 
     @property
     def radio(self):
         """GETTER: Permite 'leer' el valor de `obj.radio`"""
@@ -287,7 +289,7 @@ class Circulo:
     def mover_derecha(self, paso):
         """Mueve el círculo a la derecha sumando al eje X."""
         if isinstance(paso, int) or isinstance(paso, float):
-            # OJO: Esto llama al SETTER de 'origen'
+            #TODO OJO: Esto llama al SETTER de 'origen'
             self.origen = (self.origen[0] + paso, self.origen[1])
         else:
             raise TypeError("El paso debe ser numerico")
@@ -345,7 +347,7 @@ def main_circulo_test():
     try:
         c1 = Circulo(radio=2, origen=(0, 0))
         print(c1)
-        #SOLO LLAMA A LA FUNCION 
+        #TODO SOLO LLAMA A LA FUNCION/ SON FUNCIONES QUE TE RETORNAN UN VALOR 
         print(f"Área: {c1.area()}")
         print(f"Perímetro: {c1.perimetro()}")
         print(f"¿Está (1, 1) adentro?: {c1.esta_dentro(1, 1)}")

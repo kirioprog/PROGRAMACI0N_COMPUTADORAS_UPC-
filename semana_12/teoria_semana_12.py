@@ -712,38 +712,38 @@ plt.show()
 # %%
 
 # En caso de que no estén instalados (en tu entorno de Jupyter):
-# !pip install ipywidgets==8.0.1
+#todo  !pip install ipywidgets==8.0.1
 print("\n--- Sección de ipywidgets (Solo para Jupyter) ---")
 
 # %%
 # --- Ejemplo Básico de Widget (Solo en Jupyter) ---
 #
-# from ipywidgets import IntSlider
+#todo from ipywidgets import IntSlider
 #
-# Si ejecutas esto en Jupyter, verás un slider
-# IntSlider()
+#todo Si ejecutas esto en Jupyter, verás un slider
+# IntSlider(value = 0)
 
 # %%
 # Para *usar* el valor del widget, necesitas 'display'
 
-# from IPython.display import display
+#todo from IPython.display import display
 #
 # print("Mostrando un IntSlider (solo visible en Jupyter):")
-# val = IntSlider()
-# display(val)
+#todo val = IntSlider()
+#todo display(val)
 
 # %%
 # Y en otra celda de Jupyter, podrías leer su valor actual:
 
 # print("El valor actual del slider es (solo en Jupyter):")
-# print(val.value)
+#todo print(val.value)
 
 # %%
-# ##################################################
+#   ##################################################
 # ##     La magia de `interact` (Solo en Jupyter)   ##
 # ##################################################
 #
-# `interact` es la forma más fácil de usar widgets.
+#todo `interact` es la forma más fácil de usar widgets.
 # Creas una función, y `interact` crea los widgets
 # *automáticamente* basándose en los argumentos de la función:
 #
@@ -756,7 +756,7 @@ print("\n--- Sección de ipywidgets (Solo para Jupyter) ---")
 # from ipywidgets import interact
 # (las otras librerías ya deberían estar importadas)
 
-# 1. Definimos la función que hace el gráfico
+#todo  1. Definimos la función que hace el gráfico
 #    Toma como parámetros las cosas que queremos controlar
 # def circulo_interactivo(r, c, g):
 #     """
@@ -776,7 +776,7 @@ print("\n--- Sección de ipywidgets (Solo para Jupyter) ---")
 #     plt.grid(g)
 #     plt.show() # Importante mostrarlo dentro de la función
 
-# 2. Conectamos la función a `interact`
+#todo  Conectamos la función a `interact`
 #    `interact` llamará a `circulo_interactivo` CADA VEZ que muevas un control.
 
 # r=(0, 10) -> Slider de entero de 0 a 10
@@ -784,7 +784,7 @@ print("\n--- Sección de ipywidgets (Solo para Jupyter) ---")
 # g=True -> Checkbox
 
 # print("Creando gráfico interactivo (solo visible en Jupyter):")
-# interact(circulo_interactivo,
+#todo interact(circulo_interactivo,
 #          r=(0, 10),  # Slider de Radio
 #          c=[('Azul', 'blue'), ('Rojo', 'red'), ('Verde', 'green')], # Menú de Color
 #          g=True)     # Checkbox de Grilla
